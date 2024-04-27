@@ -6,9 +6,13 @@ public class Car {
     private String brand;
     // name of creator company
     private String model ;
-    // model of this machine for example peugeot 405 or 206 or 207
-    private int numberOfCylinder ; // in motor can be 4 , 6 or 8
+    // model of this machine for example peugeot 405 or 206 or 207 .
+    private String fuelType ;
+
+    private int kiloMeter ;
+    private int numberOfCylinder ; // in motor can be 4 , 6 or 8 .
     private int numberOfGears ; // it's an integer number between 3 and 10 .
+
     private float volumeOfEngine ; // fuel volume of engine ( automobile motor )
     private float volumeOfBock ; // by litter ; it can be in range 40 and 60  .
     private float fuelConsumption ;
@@ -61,16 +65,17 @@ public class Car {
         if (!isFind){
             System.out.println(" Oh no ! I can't find \" " + brand + " \" in my data base !");
         }else {
+            System.out.println( " Set brand successful ! " );
             this.brand = brand;
         }
     }
-    public void setGearboxModel(String gearboxModel){
+    public void setGearBoxModel(String gearboxModel){
         // Automatic , Semi Automatic , Manual
-        gearboxModel.trim().toLowerCase() ;
         if (!(gearboxModel.equals("automatic") || gearboxModel.equals("semi automatic") ||
                 gearboxModel.equals("manual"))) {
             System.out.println( " !! Error !! Please enter gearbox model correctly ! " ) ;
         }else {
+            System.out.println( " Set gearbox model successful ! " );
             this.gearboxModel = gearboxModel ;
         }
     }
@@ -83,6 +88,7 @@ public class Car {
                 carAxleModel.equals("four wheel drive") ) ) {
             System.out.println( " !! Error !! Please enter axle model correctly ! " ) ;
         }else {
+            System.out.println( " Set axle model successful ! " );
             this.carAxleModel = carAxleModel;
         }
     }
@@ -90,8 +96,9 @@ public class Car {
     public void setNumberOfCylinder(int numberOfCylinder) {
         if ( ! ( numberOfCylinder == 4 || numberOfCylinder == 6 || numberOfCylinder == 8 ) ) {
             System.out.println( " !! Error !! Please enter number of " +
-                    "cylinder model correctly ! " );
+                    "cylinder correctly ! " );
         }else {
+            System.out.println( " Set number of cylinder successful ! " );
             this.numberOfCylinder = numberOfCylinder;
         }
     }
@@ -101,6 +108,7 @@ public class Car {
             System.out.println(" !! Error !! Please enter  " +
                     " fuel consumption correctly ! ");
         } else {
+            System.out.println( " Set fuel consumption successful ! " );
             this.fuelConsumption = fuelConsumption;
         }
     }
@@ -110,6 +118,7 @@ public class Car {
             System.out.println( " !! Error !! Please enter number of gears correctly ! " );
         }
         else {
+            System.out.println( " Set number of gears successful ! " );
             this.numberOfGears = numberOfGears;
         }
     }
@@ -118,6 +127,7 @@ public class Car {
         if ( volumeOfBock > 90 || volumeOfBock < 40 ){
             System.out.println( " !! Error !! Please enter volume of bock correctly ! " );
         }else {
+            System.out.println( " Set volume of bock successful ! " );
             this.volumeOfBock = volumeOfBock;
         }
     }
@@ -126,7 +136,32 @@ public class Car {
         if ( volumeOfEngine > 4 || volumeOfEngine < 2 ){
             System.out.println( " !! Error !! Please enter volume of engine correctly ! " );
         }else {
+            System.out.println( " Set volume of engine successful ! " );
             this.volumeOfEngine = volumeOfEngine;
+        }
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setKiloMeter(int kiloMeter) {
+        if ( kiloMeter < 0 ){
+            System.out.println( " !! Error !! Please enter kilo meter correctly !" );
+        }else {
+            System.out.println( " Set kilometer successful ! " );
+            this.kiloMeter = kiloMeter ;
+        }
+    }
+
+    public void setFuelType(String fuelType) {
+        if ( ! ( fuelType.equals("ethanol") || fuelType.equals("petrol") ||
+                fuelType.equals("diesel") || fuelType.equals("biodiesel") ) ){
+            System.out.println( " !! Error !! Please enter fuel type correctly !" );
+        }
+        else {
+            System.out.println( " Set fuel type successful ! " );
+            this.fuelType = fuelType;
         }
     }
 }
