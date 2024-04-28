@@ -6,9 +6,11 @@ public class GulfCupTeams {
 
         // ایجاد دیکشنری برای قرار دادن تیم ها در آن
         // و اختصاص دادن شماره ای به هر تیم برای مشخص شدن جایگاه تیم در جدول مسابقات
+
         Dictionary persianGulfCupTeamsAndNumbers = new Hashtable() ;
 
         HashMap <String,String>  persianGulfCupTeams = new HashMap<>() ;
+        HashMap <Integer,Integer> doubleNumbers = new HashMap<>() ;
 
         persianGulfCupTeams.put( "آلومینیوم اراک" , "شمس آذر قزوین" ) ;
         persianGulfCupTeams.put( "استقلال تهران" , "پرسپولیس تهران" ) ;
@@ -18,6 +20,7 @@ public class GulfCupTeams {
         persianGulfCupTeams.put( "گل گهر سیرجان" , "مس رفسنجان" ) ;
         persianGulfCupTeams.put( "سپاهان اصفهان" , "ذوب آهن اصفهان" ) ;
         persianGulfCupTeams.put( "پیکان تهران" , "هوادار تهران" ) ;
+
         System.out.println(persianGulfCupTeams);
 
         //تنها پیش شرطی که در قرعه کشی لیگ برتر اعمال می شود
@@ -25,6 +28,17 @@ public class GulfCupTeams {
         //بر این اساس تیم ها بدین شکل گروه بندی می شوند و به هر گروه دو عدد اختصاص داده می شود
         // جفت عدد هایی که قرار است به تیم ها اختصاص داده شود عبارتند از :
         // (۱و۱۵) ، (۷و۲) ، (۳و۱۱) ، (۱۰و۴) ُ، (۱۴و۵) ، (۱۲و۶) ، (۹و۸) ، (۱۳و۱۶)
+
+        doubleNumbers.put(1,15) ;
+        doubleNumbers.put(2,7) ;
+        doubleNumbers.put(3,11) ;
+        doubleNumbers.put(4,10) ;
+        doubleNumbers.put(5,14) ;
+        doubleNumbers.put(6,12) ;
+        doubleNumbers.put(8,9) ;
+        doubleNumbers.put(13,16) ;
+
+        
 
         // تیم های استان تهران
         /// ورزشگاه آزادی
