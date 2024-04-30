@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Car {
     String fullNameOfCarOwner; // everybody knows it .
     private String gearboxModel ; // Automatic , Semi Automatic , Manual
@@ -8,8 +10,20 @@ public class Car {
     private String model ;
     // model of this machine for example peugeot 405 or 206 or 207 .
     private String fuelType ;
+    // petrol , biodiesel , diesel , ethanol
+    private String bodyColor ;
+    // if we stay outside the car what color of car we can see ?
+    private String interiorColor ;
+    // seat ( car chairs ) and dashboard of car .
+    private String bodyStatus ;
+    // It shows how many the car has been painted .
+    private String engineType ;
+    // turbo or natural breathing
 
-    private int kiloMeter ;
+    String [] bodyColorList = { "red" , "blue" , "black" , "brown" ,
+            "green" , "pink" , "purple" , "yellow" , "white" , "silver" , "golden" } ;
+
+    private int kiloMeter ; // how many your automobile work .
     private int numberOfCylinder ; // in motor can be 4 , 6 or 8 .
     private int numberOfGears ; // it's an integer number between 3 and 10 .
 
@@ -17,6 +31,8 @@ public class Car {
     private float volumeOfBock ; // by litter ; it can be in range 40 and 60  .
     private float fuelConsumption ;
     // show to you how many your automobile consume fuel . (in 100 km)
+    private float zeroToHundredTime ;
+    // Time to reach the speed of the car from 0 to 100
 
     public String getGearboxModel(){
         return gearboxModel ;
@@ -30,7 +46,14 @@ public class Car {
     public String getModel(){
         return model ;
     }
+    public String getFuelType() { return fuelType ; }
+    public String getBodyColor() {return bodyColor ; }
+    public String getInteriorColor() {return interiorColor;}
+    public String getColorList () {return Arrays.toString(bodyColorList) ;}
+    public String getBodyStatus() {return bodyStatus;}
+    public String getEngineType(){return engineType ;}
 
+    public int getKiloMeter() { return kiloMeter; }
     public int getNumberOfCylinder() {
         return numberOfCylinder;
     }
@@ -49,7 +72,9 @@ public class Car {
     public float getVolumeOfBock () {
         return volumeOfBock ;
     }
+    public float getZeroToHundredTime() {return zeroToHundredTime ;}
 
+    // string setters
     public void setBrand(String brand){
         boolean isFind = false ;
         String [] dataBaseOfBrands = { "TOYOTA" , "MERCEDES BENZ" , "TESLA" , "BMW" , "HONDA"
@@ -69,6 +94,7 @@ public class Car {
             this.brand = brand;
         }
     }
+    public void setModel(String model) {this.model = model;}
     public void setGearBoxModel(String gearboxModel){
         // Automatic , Semi Automatic , Manual
         if (!(gearboxModel.equals("automatic") || gearboxModel.equals("semi automatic") ||
@@ -93,6 +119,87 @@ public class Car {
         }
     }
 
+    public void setFuelType(String fuelType) {
+        if ( ! ( fuelType.equals("ethanol") || fuelType.equals("petrol") ||
+                fuelType.equals("diesel") || fuelType.equals("biodiesel") ) ){
+            System.out.println( " !! Error !! Please enter fuel type correctly ! " );
+        }
+        else {
+            System.out.println( " Set fuel type successful ! " );
+            this.fuelType = fuelType;
+        }
+    }
+
+    public void setGearboxModel(String gearboxModel) {
+        if ( ! ( gearboxModel.equals("automatic") || gearboxModel.equals("semi automatic") ||
+                gearboxModel.equals("manual") ) ){
+            System.out.println( " !! Error !! Please enter gear box model correctly ! " );
+        }
+        else {
+            System.out.println( " Set gear box successful ! " );
+            this.gearboxModel = gearboxModel;
+        }
+    }
+
+    public void setBodyColor(String bodyColor) {
+        boolean existColorInMyList = false ;
+        for (String i : bodyColorList){
+            if ( i.equals(bodyColor)){
+                existColorInMyList = true ;
+                System.out.println(" Set body color successful ! ");
+                this.bodyColor = bodyColor;
+            }
+        }
+        if (!existColorInMyList){
+            System.out.println( " !! Error !! Please enter body color correctly ! " );
+        }
+    }
+
+    public void setInteriorColor(String interiorColor) {
+        String [] interiorColorList = bodyColorList ;
+        boolean existColorInMyList = false ;
+        for (String i : interiorColorList){
+            if ( i.equals(interiorColor)){
+                existColorInMyList = true ;
+                System.out.println(" Set interior color successful ! ");
+                this.interiorColor = interiorColor;
+            }
+        }
+        if (!existColorInMyList){
+            System.out.println( " !! Error !! Please enter interior color correctly ! " );
+        }
+    }
+
+    public void setBodyStatus(String bodyStatus) {
+        if ( ! ( bodyStatus.equals("bi color") || bodyStatus.equals("a few painted spots")
+                || bodyStatus.equals("fender paint") ||
+                bodyStatus.equals("smoothing without paint") ||
+                bodyStatus.equals("single spot paint")) ){
+            System.out.println( " !! Error !! Please enter body status correctly ! " );
+        }else {
+            System.out.println( " Set body status successful ! " );
+            this.bodyStatus = bodyStatus;
+        }
+    }
+
+    public void setEngineType(String engineType) {
+        if (!(engineType.equals("turbo") || engineType.equals("natural breathing"))){
+            System.out.println( " !! Error !! Please enter engine type correctly ! " );
+        }else {
+            System.out.println( " Set engine type successful ! " );
+            this.engineType = engineType;
+        }
+    }
+
+    // integer setters
+    public void setKiloMeter(int kiloMeter) {
+        if ( kiloMeter < 0 ){
+            System.out.println( " !! Error !! Please enter kilo meter correctly !" );
+        }else {
+            System.out.println( " Set kilometer successful ! " );
+            this.kiloMeter = kiloMeter ;
+        }
+    }
     public void setNumberOfCylinder(int numberOfCylinder) {
         if ( ! ( numberOfCylinder == 4 || numberOfCylinder == 6 || numberOfCylinder == 8 ) ) {
             System.out.println( " !! Error !! Please enter number of " +
@@ -100,16 +207,6 @@ public class Car {
         }else {
             System.out.println( " Set number of cylinder successful ! " );
             this.numberOfCylinder = numberOfCylinder;
-        }
-    }
-
-    public void setFuelConsumption(float fuelConsumption) {
-        if (fuelConsumption < 5 || fuelConsumption > 15) {
-            System.out.println(" !! Error !! Please enter  " +
-                    " fuel consumption correctly ! ");
-        } else {
-            System.out.println( " Set fuel consumption successful ! " );
-            this.fuelConsumption = fuelConsumption;
         }
     }
 
@@ -123,6 +220,8 @@ public class Car {
         }
     }
 
+
+    // float setters .
     public void setVolumeOfBock(float volumeOfBock) {
         if ( volumeOfBock > 90 || volumeOfBock < 40 ){
             System.out.println( " !! Error !! Please enter volume of bock correctly ! " );
@@ -132,8 +231,17 @@ public class Car {
         }
     }
 
+    public void setFuelConsumption(float fuelConsumption) {
+        if (fuelConsumption < 5 || fuelConsumption > 15) {
+            System.out.println(" !! Error !! Please enter  " +
+                    " fuel consumption correctly ! ");
+        } else {
+            System.out.println( " Set fuel consumption successful ! " );
+            this.fuelConsumption = fuelConsumption;
+        }
+    }
     public void setVolumeOfEngine(float volumeOfEngine) {
-        if ( volumeOfEngine > 4 || volumeOfEngine < 2 ){
+        if ( volumeOfEngine > 2.5f || volumeOfEngine < 1 ){
             System.out.println( " !! Error !! Please enter volume of engine correctly ! " );
         }else {
             System.out.println( " Set volume of engine successful ! " );
@@ -141,27 +249,13 @@ public class Car {
         }
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setKiloMeter(int kiloMeter) {
-        if ( kiloMeter < 0 ){
-            System.out.println( " !! Error !! Please enter kilo meter correctly !" );
+    public void setZeroToHundredTime(float zeroToHundredTime) {
+        if (zeroToHundredTime < 0){
+            System.out.println( " !! Error !! Please enter zero to hundred correctly ! " );
         }else {
-            System.out.println( " Set kilometer successful ! " );
-            this.kiloMeter = kiloMeter ;
+            System.out.println( " Set zero to hundred successful ! " );
+            this.zeroToHundredTime = zeroToHundredTime;
         }
     }
-
-    public void setFuelType(String fuelType) {
-        if ( ! ( fuelType.equals("ethanol") || fuelType.equals("petrol") ||
-                fuelType.equals("diesel") || fuelType.equals("biodiesel") ) ){
-            System.out.println( " !! Error !! Please enter fuel type correctly !" );
-        }
-        else {
-            System.out.println( " Set fuel type successful ! " );
-            this.fuelType = fuelType;
-        }
-    }
+    
 }
