@@ -5,11 +5,17 @@ import practices.computer.display.Display;
 import practices.computer.keyboard.Keyboard;
 import practices.computer.mouse.Mouse;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Computer {
     Case computerCase ;
     Display computerDisplay ;
     Keyboard computerKeyboard ;
     Mouse computerMouse ;
+    static Scanner numberScanner = new Scanner(System.in);
+    static Scanner stringScanner = new Scanner(System.in);
+    static HashMap <String , Computer> computersDataBase = new HashMap<>();
     public Computer() {
         this.computerCase = setCase();
         this.computerDisplay = setDisplay();
@@ -18,8 +24,62 @@ public class Computer {
     }
 
     public static void main(String args[]){
-        Computer computer = setComputer();
-        getComputer(computer);
+        startOnlineShop();
+    }
+
+    public static void startOnlineShop(){
+        System.out.println(" Welcome to computer online shop . ");
+        System.out.println(" / --------------- // Menu // --------------- /");
+        System.out.println(" 1. Register . ");
+        System.out.println(" 2. Buy && See systems . ");
+        System.out.println(" 0. Exit ");
+        System.out.print(" Choose option and enter its number : ");
+        int menuOption = numberScanner.nextInt();
+        switch (menuOption){
+            case 1 :
+                computersDataBase.put(setOwner() , setComputer());
+                break;
+            case 2 :
+                searchForComputer();
+                break;
+            case 0 :
+                System.out.println(" OKAY . Bye :-( ");
+                break;
+            default:
+                System.out.println(" !! Error !! Please enter option number correctly !!! ");
+        }
+        if (menuOption != 0) {
+            startOnlineShop();
+        }
+    }
+    public static void searchForComputer(){
+        System.out.println(" 1. Owner full name . ");
+        System.out.println(" 2. Computer config . ");
+        System.out.println(" 0. Exit ");
+        System.out.println(" Search by : ");
+        int menuOption2 = numberScanner.nextInt();
+        if (menuOption2 == 1){
+            // search by owner
+            getComputer(computersDataBase.get(setOwner()));
+        } else if (menuOption2 == 2){
+            // search by system computer config
+            System.out.println(" I don't have this option but " +
+                    "i'll try to add this option . ");
+        } else if (menuOption2 == 0 ) {
+            startOnlineShop();
+        } else {
+            System.out.println(" !! Error !! Please enter number correctly !!!");
+        }
+    }
+
+    // -------------------------------- // set Computer // ----------------------------- //
+    public static String setOwner(){
+        System.out.println(" Owner registration part ! ");
+        System.out.print(" Owner first name : ");
+        String ownerFirstName = stringScanner.nextLine().trim().toLowerCase() ;
+        System.out.print(" Owner last name : ");
+        String ownerLastName = stringScanner.nextLine().trim().toLowerCase();
+        return ownerFirstName.concat(ownerLastName);
     }
 
     // -------------------------------- // set Computer // ----------------------------- //
