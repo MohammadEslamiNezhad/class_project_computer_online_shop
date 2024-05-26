@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f74b09e-3853-484d-acd8-d64268c777c3" name="Changes" comment="" />
+    <list default="true" id="4b3a85a7-eaa3-455e-ad94-ef45976daa5b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
-  <component name="ProjectId" id="2gHR9VJN8LZI1HNJ7tuoKCxHI4E" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2h0TbVVu1Frxbk7hmoUdLewHl2W" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Mohammad/IdeaProjects/untitled/src/ComputerOnlineShopProject",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f74b09e-3853-484d-acd8-d64268c777c3" name="Changes" comment="" />
-      <created>1715352368629</created>
+      <changelist id="4b3a85a7-eaa3-455e-ad94-ef45976daa5b" name="Changes" comment="" />
+      <created>1716730067379</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715352368629</updated>
-      <workItem from="1715352377966" duration="79000" />
-      <workItem from="1715352609730" duration="59000" />
+      <updated>1716730067379</updated>
+      <workItem from="1716730070470" duration="90000" />
     </task>
     <servers />
   </component>
