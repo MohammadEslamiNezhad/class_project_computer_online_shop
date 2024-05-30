@@ -1,6 +1,7 @@
 package practices.computer.Case;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import practices.computer.Computer;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,26 +16,19 @@ public class Power {
     // ------------------------------ // variables // -------------------------------- //
     String powerBrand;
     // Green , Asus , TSCO , ....
-    String powerFormFactor;
-    // ATX PS2 ,
+    String powerModel ;
     int externalPowerNumberWatt ;
     String govahiname80Plus ;
     // gold , bronze , silver , basic
     static Scanner scanner = new Scanner (System.in) ;
     // ------------------------------- // DataBases // -------------------------------- //
     ArrayList <String> powerBrandsDataBase = new ArrayList<> ();
-    ArrayList <String> powerFormFactorDataBase = new ArrayList<>() ;
     ArrayList <String> powerGovahiname80PlusStatusDataBase = new ArrayList<> () ;
     JSONArray powersArray = new JSONArray() ;
     // --------------------- // add brands to DataBases // ------------------------ //
     {
         powerBrandsDataBase.add("Green");
         powerBrandsDataBase.add("Asus");
-        powerBrandsDataBase.add("TSCO") ;
-    }
-    {
-        powerFormFactorDataBase.add("ATX PS2") ;
-        powerFormFactorDataBase.add("ATX12V V2.3") ;
     }
     {
         powerGovahiname80PlusStatusDataBase.add("bronze");
@@ -48,10 +42,11 @@ public class Power {
                 (0 , powerBrandsDataBase.size(), "power brand"
                         , powerBrandsDataBase )) ;
     }
-    public void setPowerFormFactor(){
-        this.powerFormFactor = powerFormFactorDataBase.get
-                (checkNumberInRange(0 , powerFormFactorDataBase.size()
-                        , "power form factor" , powerFormFactorDataBase)) ;
+
+    public String setPowerModel() {
+        System.out.print(" Please enter your power model :");
+        this.powerModel = Computer.stringScanner.nextLine();
+        return powerModel;
     }
     public void setGovahiname80Plus(){
         this.govahiname80Plus = powerGovahiname80PlusStatusDataBase.get(checkNumberInRange(
@@ -99,7 +94,7 @@ public class Power {
     public String toString() {
         return "Power{" +
                 "powerBrand='" + powerBrand + '\'' +
-                ", powerFormFactor='" + powerFormFactor + '\'' +
+                "powerModel='" + powerModel + '\'' +
                 ", externalPowerNumberWatt=" + externalPowerNumberWatt +
                 ", govahiname80Plus='" + govahiname80Plus + '\'' +
                 '}';
@@ -107,7 +102,7 @@ public class Power {
     // -------------------- // constructor && get instance of class // -------------------- //
     public Power(){
         setBrand();
-        setPowerFormFactor();
+        setPowerModel();
         setGovahiname80Plus();
         setExternalPowerNumberWatt();
         setPowersDataBase();
@@ -116,7 +111,6 @@ public class Power {
     public void setPowersDataBase() {
         JSONObject powerObject = new JSONObject();
         powerObject.put("Power brand", powerBrand);
-        powerObject.put("Power form factor", powerFormFactor);
         powerObject.put("External power number (Watt)", externalPowerNumberWatt);
         powerObject.put("Power govahiname 80Plus", govahiname80Plus);
         creatDataBase("PowersDataBase.json");

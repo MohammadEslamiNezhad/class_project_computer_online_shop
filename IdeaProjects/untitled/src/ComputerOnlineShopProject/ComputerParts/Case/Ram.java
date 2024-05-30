@@ -1,13 +1,11 @@
 package practices.computer.Case;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList ;
-import java.util.Scanner ;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-import static practices.computer.Case.MainBoard.printResult;
 import static practices.computer.Computer.creatDataBase;
 import static practices.computer.display.Display.writeFile;
 
@@ -22,6 +20,8 @@ public class Ram {
     JSONArray ramsArray = new JSONArray() ;
     // --------------------- // primitive type variables // ------------------------ //
     String ramBrand ;
+    String ramModel ;
+
     // ------------------------------- // databases // ----------------------------- //
     private final ArrayList <String> ramBrandsDataBase = new ArrayList<>() ;
     
@@ -39,6 +39,13 @@ public class Ram {
         int option = checkNumberInRange(0,ramBrandsDataBase.size() ,
                 " computer RAM ") ;
         ramBrand = ramBrandsDataBase.get(option - 1) ;
+    }
+
+    public String setRamModel() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(" What is your power model ? ");
+        this.ramModel = scanner.nextLine();
+        return ramModel;
     }
 
     // ------------------------------- // primitive type setters // ----------------------------- //
@@ -63,6 +70,7 @@ public class Ram {
                 ", ramFrequency : " + ramFrequency + "MHz" +
                 ", ramVolume : " + ramVolume + "GB" +
                 ", ramBrand : " + ramBrand +
+                ", ramModel : " + ramModel +
                 '}';
     }
 
@@ -96,6 +104,7 @@ public class Ram {
         setRamGeneration();
         setRamVolume();
         setRamFrequency();
+        setRamModel();
         setRamsDataBase();
     }
     public void setRamsDataBase() {

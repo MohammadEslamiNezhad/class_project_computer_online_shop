@@ -3,6 +3,8 @@ package practices.computer.display;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import practices.computer.Case.Power;
+import practices.computer.Computer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,6 +24,7 @@ public class Display {
 
     private String displayBrand;
     // HP , Samsung , LG , Asus , G-Plus
+    private String displayModel ;
     private String displayFunction;
     // gaming , LED , touch
     static final String dataBaseFileName = "DisplaysDataBase.json" ;
@@ -49,10 +52,11 @@ public class Display {
     public void setDisplayFunctionsDataBase() {
         displayFunctionsDataBase.add("Gaming") ;
         displayFunctionsDataBase.add("Touch") ;
-        displayFunctionsDataBase.add("LED") ;
+        displayFunctionsDataBase.add("Drawing") ;
+        displayFunctionsDataBase.add("Official") ;
     }
 
-    // ---------------------------- / primetive type setter / ----------------------------- //
+    // ---------------------------- / primitive type setter / ----------------------------- //
     public String setDisplayBrand() {
         setDisplayBrandsDataBase();
         int option ;
@@ -130,7 +134,12 @@ public class Display {
         return sizeOfYourDisplay ;
     }
 
-     // -------------------------------- // getter // --------------------------------------//
+    public String setDisplayModel() {
+        System.out.print(" Enter your display model :");
+        this.displayModel = Computer.stringScanner.nextLine();
+        return displayModel;
+    }
+    // -------------------------------- // getter // --------------------------------------//
 
     @Override
     public String toString() {
@@ -142,6 +151,7 @@ public class Display {
                 ", \"hasDisplayPort\" : \"" + hasDisplayPort + '\"' +
                 ", \"hasDvi\" : \"" + hasDvi + '\"' +
                 ", \"hasVga\" : \"" + hasVga + '\"' +
+                ", \"displayModel\" : \"" + displayModel + '\"' +
                 '}';
     }
 
@@ -167,6 +177,7 @@ public class Display {
     public static void setDisplaysDataBase(Display display) {
         JSONObject displayObject = new JSONObject();
         displayObject.put("Display brand", display.setDisplayBrand());
+        displayObject.put("Display model" , display.setDisplayModel());
         displayObject.put("Display function", display.setDisplayFunction());
         displayObject.put("Size of your display", display.setSizeOfYourDisplay());
         displayObject.put("Has HDMI port", display.setHasHdmi());

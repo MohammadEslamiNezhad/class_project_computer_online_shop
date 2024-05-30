@@ -17,8 +17,8 @@ public class Computer {
     Display computerDisplay ;
     Keyboard computerKeyboard ;
     Mouse computerMouse ;
-    static Scanner numberScanner = new Scanner(System.in);
-    static Scanner stringScanner = new Scanner(System.in);
+    public static Scanner numberScanner = new Scanner(System.in);
+    public static Scanner stringScanner = new Scanner(System.in);
     static ArrayList <Computer> computersDataBase = new ArrayList<>();
 
     public static void main(String args[]){
@@ -220,9 +220,9 @@ public class Computer {
         try{
             File projectDataBase = new File(dataBaseName);
             if (projectDataBase.createNewFile()){
-                System.out.println(" File " + projectDataBase.getName() + " created ! ");
+//                System.out.println(" File " + projectDataBase.getName() + " created ! ");
             }else {
-                System.out.println(" File already exists . ");
+//                System.out.println(" File already exists . ");
             }
         }catch (IOException ioException){
             System.out.println( " An error occurred . ");

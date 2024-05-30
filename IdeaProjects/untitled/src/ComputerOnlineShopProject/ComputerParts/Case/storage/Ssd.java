@@ -17,7 +17,6 @@ public class Ssd extends Storage {
     // ------------------------------------ / variables / ------------------------------------ //
     private String ssdBrand ;
     // Samsung , lexar , ...
-    private final Scanner scanner = new Scanner(System.in) ;
 
     // ------------------------------------- / DataBase / ------------------------------------ //
     private final ArrayList<String> ssdBrandsDataBase = new ArrayList<>() ;
@@ -33,7 +32,6 @@ public class Ssd extends Storage {
         this.ssdBrand = ssdBrandsDataBase.get(checkNumberInRange(0 ,
                 ssdBrandsDataBase.size() , "SSD brand" , ssdBrandsDataBase ));
     }
-
     // ------------------------------------ / constructor / ------------------------------------ //
     public Ssd(){
         setHasSsd(true);
@@ -62,6 +60,5 @@ public class Ssd extends Storage {
         ssdObject.put("SSD Write speed", writeSpeed);
         creatDataBase("ssdsDataBase.json");
         writeFile(ssdObject , ssdsArray , "ssdsDataBase.json");
-
     }
 }

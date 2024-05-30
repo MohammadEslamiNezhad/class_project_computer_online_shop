@@ -1,6 +1,6 @@
 package practices.ComputerPartOnlineShop.OnlineShopUtils;
 
-import practices.ComputerPartOnlineShop.interfaces.ComputerPartInterface;
+import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBacksOdMainMenu;
 
 public class OnlineShopInputOutputManager {
     private static void showWelcomeMessage(String welcomePart){
@@ -19,7 +19,7 @@ public class OnlineShopInputOutputManager {
         System.out.println(" 0. Exit ");
         showEnterNumberMessage();
     } // This method show main menu options .
-    public static void runProgramOptions(int option, ComputerPartInterface callBack){
+    public static void runProgramOptions(int option, OnlineShopCallBacksOdMainMenu callBack){
         switch (option){
             case 1 :
                 callBack.onSearchMenuCallBack();

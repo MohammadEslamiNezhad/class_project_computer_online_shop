@@ -3,11 +3,8 @@ package practices.computer.Case;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import static practices.computer.Case.MainBoard.printResult;
 import static practices.computer.Case.Power.checkNumberInRange;
 import static practices.computer.Case.Power.scanner;
 import static practices.computer.Computer.creatDataBase;
@@ -16,7 +13,8 @@ import static practices.computer.display.Display.writeFile;
 
 public class Cpu {
     String cpuBrand;
-    // intel or AMD 
+    // intel or AMD
+    String cpuSku;
     String cpuFamily;
     // core i , ryzen
     int cpuFamilyNumber;
@@ -67,6 +65,13 @@ public class Cpu {
         this.cpuBrand = cpuBrandsDataBase.get( checkNumberInRange(1,
                 2, "CPU brands",cpuBrandsDataBase ) );
     }
+
+    public String setCpuSku() {
+        System.out.println(" What is your CPU SKU ? ");
+        this.cpuSku = scanner.nextLine();
+        return cpuSku;
+    }
+
     public void setFamily(){
         if (cpuBrand.equals("Intel")){
             this.cpuFamily =  setIntelCpuFamily();
@@ -106,11 +111,13 @@ public class Cpu {
                     "your CPU on my database . ");
         }
     }
+
     // --------------------------------- // getters // --------------------------------- //
     @Override
     public String toString() {
         return "Cpu{" +
                 "cpuBrand='" + cpuBrand + '\'' +
+                "cpuSku='" + cpuSku + '\'' +
                 ", cpuFamily='" + cpuFamily + '\'' +
                 ", cpuFamilyNumber=" + cpuFamilyNumber +
                 ", cpuGeneration=" + cpuGeneration +
@@ -122,6 +129,7 @@ public class Cpu {
         setFamily();
         setFamilyNumber();
         setGeneration();
+        setCpuSku();
         setCpusDataBase();
     }
 
@@ -145,6 +153,7 @@ public class Cpu {
         cpuObject.put("CPU Family", cpuFamily);
         cpuObject.put("CPU FamilyNumber", cpuFamilyNumber);
         cpuObject.put("CPU Generation", cpuGeneration);
+        cpuObject.put("CPU SKU", cpuSku);
         creatDataBase("CPUsDataBase.json");
         writeFile(cpuObject , cpusArray , "CPUsDataBase.json");
     }

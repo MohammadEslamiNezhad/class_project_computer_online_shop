@@ -53,6 +53,7 @@ public class Hdd extends Storage {
                 ", writeSpeed=" + writeSpeed +
                 '}';
     }
+
     public void setHddsDataBase(){
         JSONObject hddObject = new JSONObject();
         hddObject.put("HDD brand", hddBrand);

@@ -6,13 +6,13 @@ import static practices.computer.Case.MainBoard.printResult;
 
 public class Storage {
     // ----------------------------------- / variables / ----------------------------------- //
-    static boolean hasHdd ;
-    static boolean hasSsd ;
+    protected static boolean hasHdd ;
+    protected static boolean hasSsd ;
     // has HDD & SSD
-    int volume ; 
+    protected int volume ;
     // GB 
-    int readSpeed; 
-    int writeSpeed ;
+    protected int readSpeed;
+    protected int writeSpeed ;
     // Gb / sec
     static Scanner scanner = new Scanner(System.in) ;
 
@@ -118,5 +118,7 @@ public class Storage {
             System.out.println(ssd);
         }
     }
+
+
 
 }
