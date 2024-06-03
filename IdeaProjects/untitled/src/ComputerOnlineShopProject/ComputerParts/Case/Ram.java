@@ -32,13 +32,14 @@ public class Ram {
         ramBrandsDataBase.add("Samsung") ;
     }
     // ----------------------------- // primitive type setters // --------------------------- //
-    public void setRamBrand(){
+    public String setRamBrand(){
         for (int i = 0 ; i < ramBrandsDataBase.size() ; i ++ ){
             System.out.println(" " + (i + 1) + ". " + ramBrandsDataBase.get(i));
         }
         int option = checkNumberInRange(0,ramBrandsDataBase.size() ,
                 " computer RAM ") ;
         ramBrand = ramBrandsDataBase.get(option - 1) ;
+        return ramBrand ;
     }
 
     public String setRamModel() {
@@ -48,20 +49,22 @@ public class Ram {
         return ramModel;
     }
 
-    // ------------------------------- // primitive type setters // ----------------------------- //
-    public void setRamGeneration(){
+    public int setRamGeneration(){
         ramGeneration = checkNumberInRange(3,5,
                 " RAM generation (From DDR3 to DDR5)");
+        return ramGeneration ;
     }
-    public void setRamFrequency() {
+    public int setRamFrequency() {
         ramFrequency = checkNumberInRange(1000,4000,
                 " RAM frequency (MHz)") ;
+        return ramFrequency ;
     }
-    public void setRamVolume(){
+    public int setRamVolume(){
         ramVolume = checkRamVolumeNumber(checkNumberInRange(0,64," RAM volume " + " ( 2 , 4 , 8 , 16 , 32 , 64 )"));
+        return ramVolume ;
     }
 
-    // --------------------------------- // getters // ------------------------------- //
+    // ------------------------------------- // getters // ----------------------------------- //
 
     @Override
     public String toString() {
@@ -98,21 +101,19 @@ public class Ram {
         }
     }
 
-    // --------------------- // constructor && get instance of class // -------------------- //
+    // ---------------------------------- // constructor // -------------------------------- //
     public Ram(){
-        setRamBrand();
-        setRamGeneration();
-        setRamVolume();
-        setRamFrequency();
-        setRamModel();
         setRamsDataBase();
     }
+
+    // ------------------------------- // JSON file writer // ------------------------------ //
     public void setRamsDataBase() {
         JSONObject ramObject = new JSONObject();
-        ramObject.put("Ram brand", ramBrand);
-        ramObject.put("Ram frequency", ramFrequency);
-        ramObject.put("Ram generation", ramGeneration);
-        ramObject.put("Ram volume", ramVolume);
+        ramObject.put("Ram brand", setRamBrand());
+        ramObject.put("Ram model", setRamModel());
+        ramObject.put("Ram frequency", setRamFrequency());
+        ramObject.put("Ram generation", setRamGeneration());
+        ramObject.put("Ram volume", setRamVolume());
         creatDataBase("RAMsDataBase.json");
         writeFile(ramObject,ramsArray,"RAMsDataBase.json");
     }

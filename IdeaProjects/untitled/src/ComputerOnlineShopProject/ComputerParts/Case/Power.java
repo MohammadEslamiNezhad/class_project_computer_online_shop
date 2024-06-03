@@ -37,10 +37,11 @@ public class Power {
         powerGovahiname80PlusStatusDataBase.add("basic");
     }
     // ------------------------------- // setters // ---------------------------------- //
-    public void setBrand(){
+    public String setBrand(){
         this.powerBrand = powerBrandsDataBase.get(checkNumberInRange
                 (0 , powerBrandsDataBase.size(), "power brand"
                         , powerBrandsDataBase )) ;
+        return powerBrand ;
     }
 
     public String setPowerModel() {
@@ -48,12 +49,13 @@ public class Power {
         this.powerModel = Computer.stringScanner.nextLine();
         return powerModel;
     }
-    public void setGovahiname80Plus(){
+    public String setGovahiname80Plus(){
         this.govahiname80Plus = powerGovahiname80PlusStatusDataBase.get(checkNumberInRange(
                 0 , powerGovahiname80PlusStatusDataBase.size(),
                 "power govahiname", powerGovahiname80PlusStatusDataBase) );
+        return govahiname80Plus ;
     }
-    public void setExternalPowerNumberWatt(){
+    public int setExternalPowerNumberWatt(){
         do{
             System.out.println(" Please enter external power number ") ; 
             System.out.print(" >>> ");
@@ -66,6 +68,7 @@ public class Power {
             }
             
         }while (true);
+        return externalPowerNumberWatt ;
     }
     
     // ---------------------------- // other methods // ------------------------------- //
@@ -101,18 +104,14 @@ public class Power {
     }
     // -------------------- // constructor && get instance of class // -------------------- //
     public Power(){
-        setBrand();
-        setPowerModel();
-        setGovahiname80Plus();
-        setExternalPowerNumberWatt();
         setPowersDataBase();
     }
 
     public void setPowersDataBase() {
         JSONObject powerObject = new JSONObject();
-        powerObject.put("Power brand", powerBrand);
-        powerObject.put("External power number (Watt)", externalPowerNumberWatt);
-        powerObject.put("Power govahiname 80Plus", govahiname80Plus);
+        powerObject.put("Power brand", setBrand());
+        powerObject.put("External power number (Watt)", setExternalPowerNumberWatt());
+        powerObject.put("Power govahiname 80Plus", setGovahiname80Plus());
         creatDataBase("PowersDataBase.json");
         writeFile(powerObject,powersArray,"PowersDataBase.json");
     }

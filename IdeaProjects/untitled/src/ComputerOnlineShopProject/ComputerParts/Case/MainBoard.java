@@ -3,8 +3,6 @@ package practices.computer.Case;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static practices.computer.Case.Power.checkNumberInRange;
@@ -58,49 +56,59 @@ public class MainBoard {
         generationOfMemoryDataBase.add(5);
     }
     // --------------------------------- // setters // --------------------------------- //
-    public void setMainBoardBrand(){
+    public String setMainBoardBrand(){
         mainBoardBrand = mainBoardBrandsDataBase.get( checkNumberInRange(1,
                 mainBoardBrandsDataBase.size(), "MainBoard brand" ,
                 mainBoardBrandsDataBase) );
+        return mainBoardBrand;
     }
-    public void setNetworkCard(){
+    public String setNetworkCard(){
         networkCard = networkCardsDataBase.get( checkNumberInRange(1,
                 networkCardsDataBase.size(), "Network Card type" ,
                 networkCardsDataBase) );
+        return networkCard;
     }
-    public void setMaximumMemoryVolume(){
+    public int setMaximumMemoryVolume(){
         maximumMemoryVolume = maximumVolumeOfMemoryDataBase.get(checkNumberInList(
                 maximumVolumeOfMemoryDataBase,
                 "maximum volume of memory in your main board")) ;
+        return maximumMemoryVolume;
     }
-    public void setMemoryGeneration(){
+    public int setMemoryGeneration(){
         memoryGeneration = generationOfMemoryDataBase.get(checkNumberInList(
                 generationOfMemoryDataBase,
                 "Memory generation (DDR3 or 4 or 5 )")) ;
+        return memoryGeneration;
     }
-    public void setHasSata3Slot(){
+    public boolean setHasSata3Slot(){
         hasSata3Slot = hasPart("SATA3 slot" , "MainBoard");
+        return hasSata3Slot;
     }
 
-    public void setHasM2Slot() {
-       hasM2Slot = hasPart("M.2 slot" , "MainBoard");;
+    public boolean setHasM2Slot() {
+       hasM2Slot = hasPart("M.2 slot" , "MainBoard");
+       return hasM2Slot;
     }
 
 
-    public void setHasHdmi() {
+    public boolean setHasHdmi() {
         hasHdmi = hasPart("HDMI port" , "MainBoard");
+        return hasHdmi;
     }
 
-    public void setHasDisplayPort() {
+    public boolean setHasDisplayPort() {
         hasDisplayPort = hasPart("Display Port" , "MainBoard");
+        return hasDisplayPort;
     }
 
-    public void setHasDvi() {
+    public boolean setHasDvi() {
         hasDvi = hasPart("DVI port" , "MainBoard");
+        return hasDvi;
     }
 
-    public void setHasVga() {
+    public boolean setHasVga() {
         hasVga = hasPart("VGA port" , "MainBoard");
+        return hasVga;
     }
 
     // ----------------------------------- // getter// ------------------------------------ //
@@ -123,34 +131,23 @@ public class MainBoard {
     public static void printResult(String title , String titleValue){
         System.out.println(" Your " + title + " : " + titleValue);
     }
-    // --------------------- // constructor && get instance of class// ------------------- //
+    // ----------------------------------- // constructor// -------------------------------- //
     public MainBoard(){
-        setMainBoardBrand();
-        setNetworkCard();
-        setMemoryGeneration();
-        setMaximumMemoryVolume();
-        // -------------------------- // set HAS methods // ---------------------------- //
-        setHasM2Slot();
-        setHasSata3Slot();
-        setHasDisplayPort();
-        setHasHdmi();
-        setHasDvi();
-        setHasVga();
         setMainBoardsDataBase();
     }
 
     public void setMainBoardsDataBase(){
         JSONObject mainBoardObject = new JSONObject();
-        mainBoardObject.put("MainBoard brand", mainBoardBrand);
-        mainBoardObject.put("MainBoard network card", networkCard);
-        mainBoardObject.put("MainBoard memory generation", memoryGeneration);
-        mainBoardObject.put("MainBoard maximum memory volume", maximumMemoryVolume);
-        mainBoardObject.put("MainBoard has M.2 slot", hasM2Slot);
-        mainBoardObject.put("MainBoard has SATA3 slot", hasSata3Slot);
-        mainBoardObject.put("MainBoard has HDMI", hasHdmi);
-        mainBoardObject.put("MainBoard has Display port", hasDisplayPort);
-        mainBoardObject.put("MainBoard has VGA", hasVga);
-        mainBoardObject.put("MainBoard has DVI", hasDvi);
+        mainBoardObject.put("MainBoard brand", setMainBoardBrand());
+        mainBoardObject.put("MainBoard network card", setNetworkCard());
+        mainBoardObject.put("MainBoard memory generation", setMemoryGeneration());
+        mainBoardObject.put("MainBoard maximum memory volume", setMaximumMemoryVolume());
+        mainBoardObject.put("MainBoard has M.2 slot", setHasM2Slot());
+        mainBoardObject.put("MainBoard has SATA3 slot", setHasSata3Slot());
+        mainBoardObject.put("MainBoard has HDMI", setHasHdmi());
+        mainBoardObject.put("MainBoard has Display port", setHasDisplayPort());
+        mainBoardObject.put("MainBoard has VGA", setHasVga());
+        mainBoardObject.put("MainBoard has DVI", setHasDvi());
         creatDataBase("MainBoardsDataBase.json");
         writeFile(mainBoardObject , mainBoardsArray,"MainBoardsDataBase.json");
     }

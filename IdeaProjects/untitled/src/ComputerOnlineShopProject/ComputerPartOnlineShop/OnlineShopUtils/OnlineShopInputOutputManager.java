@@ -6,8 +6,12 @@ import org.json.JSONObject;
 import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBacksOdMainMenu;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class OnlineShopInputOutputManager {
+    public static Scanner stringScanner = new Scanner(System.in);
+    public static Scanner numberScanner = new Scanner(System.in);
     private static void showWelcomeMessage(String welcomePart){
         System.out.println(" Welcome to " + welcomePart + " menu ! ");
     }
@@ -123,4 +127,37 @@ public class OnlineShopInputOutputManager {
         }
     }
 
+    public static int checkNumberInList(ArrayList list , String message){
+        int number;
+        do {
+            System.out.print(" Please enter " + message + " number : ");
+            number = numberScanner.nextInt();
+            if (!list.contains(number)){
+                System.out.println(" !! Error !! Please try again ! ");
+            }
+        }while(!list.contains(number));
+        return list.indexOf(number);
+    }
+
+    public static int checkNumberInRange(int firstNumber , int finishedNumber ,
+                                         String message , ArrayList dataBase){
+        int checkNumber;
+        do{
+            showDataBase(dataBase) ;
+            System.out.println(" Choose " + message + " and enter its number ") ;
+            System.out.print(" >>> ");
+            checkNumber = numberScanner.nextInt();
+            if (firstNumber > checkNumber || finishedNumber < checkNumber){
+                System.out.println(" !! Error !! Please try again ! ");
+            }else {break;}
+
+        }while (true);
+        return checkNumber - 1 ;
+    }
+
+    public static void showDataBase(ArrayList dataBase ){
+        for (int i = 0 ; i < dataBase.size() ; i ++ ){
+            System.out.println(" " + (i + 1) + ". " + dataBase.get(i));
+        }
+    }
 }

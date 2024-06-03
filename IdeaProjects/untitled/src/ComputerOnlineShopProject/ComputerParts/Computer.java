@@ -1,6 +1,7 @@
 package practices.computer;
 
-import practices.computer.Case.Case;
+import practices.computer.Case.*;
+import practices.computer.Case.storage.Storage;
 import practices.computer.display.Display;
 import practices.computer.keyboard.Keyboard;
 import practices.computer.mouse.Mouse;
@@ -9,10 +10,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static practices.computer.Case.Case.*;
+import static practices.computer.Case.storage.Storage.buildStorage;
 
 public class Computer {
-    Case computerCase ;
     Display computerDisplay ;
     Keyboard computerKeyboard ;
     Mouse computerMouse ;
@@ -53,13 +53,12 @@ public class Computer {
         System.out.println(" 1. Keyboard ");
         System.out.println(" 2. Mouse ");
         System.out.println(" 3. Display ");
-        System.out.println(" 4. Case ");
-        System.out.println(" 5. MainBoard ");
-        System.out.println(" 6. CPU ");
-        System.out.println(" 7. RAM ");
-        System.out.println(" 8. Storage ");
-        System.out.println(" 9. Power ");
-        System.out.println(" 10. GPU ");
+        System.out.println(" 4. MainBoard ");
+        System.out.println(" 5. CPU ");
+        System.out.println(" 6. RAM ");
+        System.out.println(" 7. Storage ");
+        System.out.println(" 8. Power ");
+        System.out.println(" 9. GPU ");
         System.out.println(" 0. Exit ");
         System.out.print(" register : ");
         int menuOption1 = numberScanner.nextInt();
@@ -77,30 +76,26 @@ public class Computer {
                 break;
 
             case 4 :
-                setCase();
-                break;
-
-            case 5 :
                 setMainBoard();
                 break;
 
-            case 6 :
+            case 5 :
                 setCpu();
                 break;
 
-            case 7 :
+            case 6 :
                 setRam();
                 break;
 
-            case 8 :
+            case 7 :
                 setStorage();
                 break;
 
-            case 9 :
+            case 8 :
                 setPower();
                 break;
 
-            case 10 :
+            case 9 :
                 setGpu();
                 break;
 
@@ -116,10 +111,9 @@ public class Computer {
         }
     }
     public static void searchForComputerParts(){
-        System.out.println(" 1. Keyboard config . ");
-        System.out.println(" 2. Mouse config . ");
-        System.out.println(" 3. Display config . ");
-        System.out.println(" 4. Case config . ");
+        System.out.println(" 1. Keyboard ");
+        System.out.println(" 2. Mouse ");
+        System.out.println(" 3. Display ");
         System.out.println(" 0. Exit ");
         System.out.print(" Search by : ");
         int menuOption2 = numberScanner.nextInt();
@@ -146,14 +140,6 @@ public class Computer {
                 for (Computer i : computersDataBase) {
                     if (i.computerDisplay.toString().equals(buyerDisplay.toString())) {
                         System.out.println(i.computerDisplay.toString());
-                    }
-                }
-                break;
-            case 4 :
-                Case buyerComputerCase = setCase() ;
-                for (Computer i : computersDataBase) {
-                    if (i.computerCase.equals(buyerComputerCase)) {
-                        i.computerCase.getCase(buyerComputerCase);
                     }
                 }
                 break;
@@ -206,14 +192,50 @@ public class Computer {
         return display;
     }
 
-    // --------------------------------- // set Case // --------------------------------- //
-    public static Case setCase(){
-        System.out.println(" Case registration part . ");
-        Case computerCase = new Case();
-        System.out.println(" !! OKAY !! Your Case is register ! ");
-        return computerCase ;
+    // ---------------------------------- // set storage // ------------------------------ //
+    public static Storage setStorage() {
+        return buildStorage();
     }
 
+    // ----------------------------------- // set power // -------------------------------- //
+    public static Power setPower() {
+        System.out.println(" power registration part . ");
+        Power power = new Power();
+        System.out.println(" !! OKAY !! Your power is register ! ");
+        return power;
+    }
+
+    // ------------------------------------ // set RAM // --------------------------------- //
+    public static Ram setRam() {
+        System.out.println(" RAM registration part . ");
+        Ram ram = new Ram();
+        System.out.println(" !! OKAY !! Your RAM is register ! ");
+        return ram;
+    }
+
+    // ------------------------------------ // set CPU // --------------------------------- //
+    public static Cpu setCpu() {
+        System.out.println(" CPU registration part . ");
+        Cpu cpu = new Cpu();
+        System.out.println(" !! OKAY !! Your CPU is register ! ");
+        return cpu;
+    }
+
+    // --------------------------------- // set MainBoard // ------------------------------ //
+    public static MainBoard setMainBoard() {
+        System.out.println(" MainBoard registration part . ");
+        MainBoard mainBoard = new MainBoard();
+        System.out.println(" !! OKAY !! Your MainBoard is register ! ");
+        return mainBoard;
+    }
+
+    // ------------------------------------ // set GPU // --------------------------------- //
+    public static Gpu setGpu() {
+        System.out.println(" GPU registration part . ");
+        Gpu gpu = new Gpu();
+        System.out.println(" !! OKAY !! Your GPU is register ! ");
+        return gpu;
+    }
     public static void creatDataBase(String dataBaseName){
         try{
             File projectDataBase = new File(dataBaseName);
