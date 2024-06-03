@@ -1,6 +1,11 @@
 package practices.ComputerPartOnlineShop.OnlineShopUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBacksOdMainMenu;
+
+import java.io.*;
 
 public class OnlineShopInputOutputManager {
     private static void showWelcomeMessage(String welcomePart){
@@ -74,7 +79,47 @@ public class OnlineShopInputOutputManager {
 
             default:
                 showWrongNumberError();
+        }
+    }
 
+    public static void creatDataBase(String dataBaseName){
+        try{
+            File projectDataBase = new File(dataBaseName);
+            if (projectDataBase.createNewFile()){
+//                System.out.println(" File " + projectDataBase.getName() + " created ! ");
+            }else {
+//                System.out.println(" File already exists . ");
+            }
+        }catch (IOException ioException){
+            System.out.println( " An error occurred . ");
+            ioException.printStackTrace();
+        }
+    }
+
+    public static void writeFile(JSONObject computerPartJsonObject , JSONArray computerPartArray , String dataBaseFileName){
+        try (BufferedReader reader = new BufferedReader(new FileReader(dataBaseFileName))) {
+            String line;
+            StringBuilder jsonContent = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                jsonContent.append(line);
+            }
+            if (!jsonContent.isEmpty()) {
+                computerPartArray = new JSONArray(jsonContent.toString());
+            } else {
+                computerPartArray = new JSONArray();
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            computerPartArray = new JSONArray();
+        }
+
+        computerPartArray.put(computerPartJsonObject);
+
+        try (FileWriter file = new FileWriter(dataBaseFileName)) {
+            file.write(computerPartArray.toString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

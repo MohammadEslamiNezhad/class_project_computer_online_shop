@@ -1,43 +1,37 @@
-package practices.computer.keyboard;
+package practices.ComputerPartOnlineShop.OnlineShopCommodity;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static practices.computer.Computer.creatDataBase;
-import static practices.computer.display.Display.writeFile;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class Keyboard {
+import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.creatDataBase;
+import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.writeFile;
+
+public class Keyboard extends ComputerPart{
     String keyboardBrand;
     String keyboardConnectionType;
     // wire , wireless
     String keyboardFunction;
-     // gaming , official
+    // gaming , official
     final String dataBaseFileName = "keyboardsDataBase.json";
 
     JSONArray keyboardsArray = new JSONArray();
 
     // ------------------------------- / Brands DataBase / ------------------------------- //
-    private final ArrayList <String> keyboardBrandsDataBase = new ArrayList<>() ;
+    private final ArrayList<String> keyboardBrandsDataBase = new ArrayList<>() ;
     private final Scanner scanner = new Scanner(System.in) ;
 
-
-    // ------------------------------ / setters & getters / ------------------------------- //
-    // ----------------------------------- / setters / ------------------------------------ //
-    // ------------------------------- / DataBase setter / -------------------------------- //
+    // ----------------------------- / setters & getters / ------------------------------ //
+    // ---------------------------------- / setters / ----------------------------------- //
+    // ------------------------------ / DataBase setter / ------------------------------- //
     private void setKeyboardBrandsDataBase() {
         keyboardBrandsDataBase.add("Green") ;
         keyboardBrandsDataBase.add("Logitech") ;
         keyboardBrandsDataBase.add("TSCO") ;
     }
-    // ---------------------------- / permetive type setter / ----------------------------- //
+    // ------------------------------- / variables setter / -------------------------------- //
 
     public String setKeyboardBrand() {
         setKeyboardBrandsDataBase();
@@ -57,7 +51,6 @@ public class Keyboard {
         System.out.println(" " + keyboardBrand + " Very nice choice ! ");
         return keyboardBrand;
     }
-
     public String setKeyboardConnectionType() {
         int option ;
         do {
@@ -110,19 +103,22 @@ public class Keyboard {
         return keyboardFunction;
     }
 
-    // ----------------------------------- / getters / ------------------------------------ //
-    // ---------------------------- / primitive type getters / ---------------------------- //
+    // ---------------------------------- / object getter / ----------------------------------- //
+
     @Override
     public String toString() {
-        return "Keyboard {" +
-                "keyboardBrand : \"" + keyboardBrand + '\"' +
-                ", keyboardConnectionType : \"" + keyboardConnectionType + '\"' +
-                ", keyboardFunction : \"" + keyboardFunction + '\"' +
+        return "Keyboard{" +
+                "keyboardBrand='" + keyboardBrand + '\'' +
+                ", keyboardConnectionType='" + keyboardConnectionType + '\'' +
+                ", keyboardFunction='" + keyboardFunction + '\'' +
                 '}';
     }
+
+    // --------------------------------- / constructor / ----------------------------------- //
     public Keyboard() {
-        setKeyBoardsDataBase();
+            setKeyBoardsDataBase();
     }
+    // ------------------------------- / set JSON file  / --------------------------------- //
     public void setKeyBoardsDataBase(){
         JSONObject keyboardObject = new JSONObject();
         keyboardObject.put("Keyboard brand", setKeyboardBrand());
@@ -130,5 +126,69 @@ public class Keyboard {
         keyboardObject.put("Keyboard function", setKeyboardFunction());
         creatDataBase(dataBaseFileName);
         writeFile(keyboardObject , keyboardsArray , dataBaseFileName);
+    }
+
+    @Override
+    public void setStore(int store) {
+
+    }
+
+    @Override
+    public void setOwnerUserName(String ownerUserName) {
+
+    }
+
+    @Override
+    public String setBrand() {setKeyboardBrandsDataBase();
+        for (int i = 0; i < keyboardBrandsDataBase.size() ; i++) {
+            System.out.println(" " + (i + 1) + ". " + keyboardBrandsDataBase.get(i));
+        }
+        System.out.println("        ");
+        int option ;
+        do {
+            System.out.print(" Choose keyboard brand and enter its number : ");
+            option = scanner.nextInt() - 1  ;
+            if (option < 0 || option >= keyboardBrandsDataBase.size()) {
+                System.out.println(" !! Error !! Please enter option correctly ! ");
+            } else {break;}
+        } while (true) ;
+        this.keyboardBrand = keyboardBrandsDataBase.get(option);
+        System.out.println(" " + keyboardBrand + " Very nice choice ! ");
+        return keyboardBrand;
+    }
+
+    @Override
+    public void setModel(String model) {
+
+    }
+
+    @Override
+    public void setPrice(long price) {
+
+    }
+
+    @Override
+    public int getStore() {
+        return 0;
+    }
+
+    @Override
+    public String getOwnerUserName() {
+        return null;
+    }
+
+    @Override
+    public String getBrand() {
+        return null;
+    }
+
+    @Override
+    public String getModel() {
+        return null;
+    }
+
+    @Override
+    public long getPrice() {
+        return 0;
     }
 }

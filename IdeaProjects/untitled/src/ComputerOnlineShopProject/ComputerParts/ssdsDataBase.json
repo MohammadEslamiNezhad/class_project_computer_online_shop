@@ -1,1 +1,64 @@
-[{"SSD Write speed":500,"SSD brand":"Samsung","SSD volume":1000,"SSD Read speed":500}]
+[
+  {
+    "SSD Write speed":500,
+    "SSD brand":"Samsung",
+    "SSD volume":1000,
+    "SSD Read speed":500
+  }
+,
+  {
+    "SSD Write speed":300,
+    "SSD brand":"Lexar",
+    "SSD model":"NS100",
+    "SSD volume":256,
+    "SSD Read speed":520
+}
+,
+  {
+    "SSD Write speed":530,
+    "SSD brand":"Samsung",
+    "SSD model":"EVO 870",
+    "SSD volume":500,
+    "SSD Read speed":560
+  }
+,
+  {
+    "SSD Write speed":530,
+    "SSD brand":"Samsung",
+    "SSD model":"EVO 870",
+    "SSD volume":1000,
+    "SSD Read speed":560
+  }
+,
+  {
+  "SSD Write speed":530,
+    "SSD brand":"Samsung",
+    "SSD model":"EVO 870",
+    "SSD volume":500,
+    "SSD Read speed":560
+  }
+,
+  {
+    "SSD Write speed":530,
+    "SSD brand":"Samsung",
+    "SSD model":"EVO 870","SSD volume":250,
+  "SSD Read speed":560},{"SSD Write speed":530,
+  "SSD brand":"Samsung",
+  "SSD model":"EVO 870","SSD volume":4000,"SSD Read speed":560
+}
+,
+  {
+    "SSD Write speed":530,"SSD brand":"Samsung",
+    "SSD model":"QVO 870","SSD volume":4000,"SSD Read speed":560
+  }
+,
+  {
+    "SSD Write speed":520,"SSD brand":"Samsung",
+    "SSD model":"EVO 860","SSD volume":2000,"SSD Read speed":550
+  }
+,
+  {
+    "SSD Write speed":530,"SSD brand":"Samsung",
+    "SSD model":"860 PRO","SSD volume":256,"SSD Read speed":560
+  }
+]

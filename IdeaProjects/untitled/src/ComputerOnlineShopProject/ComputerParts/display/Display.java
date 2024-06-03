@@ -156,7 +156,7 @@ public class Display {
     }
 
     public Display(){
-        setDisplaysDataBase(this);
+        setDisplaysDataBase();
     }
 
     // -------------------------------- / other methods / --------------------------------- //
@@ -174,16 +174,16 @@ public class Display {
         return (option == 1);
     }
 
-    public static void setDisplaysDataBase(Display display) {
+    public void setDisplaysDataBase() {
         JSONObject displayObject = new JSONObject();
-        displayObject.put("Display brand", display.setDisplayBrand());
-        displayObject.put("Display model" , display.setDisplayModel());
-        displayObject.put("Display function", display.setDisplayFunction());
-        displayObject.put("Size of your display", display.setSizeOfYourDisplay());
-        displayObject.put("Has HDMI port", display.setHasHdmi());
-        displayObject.put("Has Display port", display.setHasDisplayPort());
-        displayObject.put("Has VGA port", display.setHasVga());
-        displayObject.put("Has DVI port", display.setHasDvi());
+        displayObject.put("Display brand", setDisplayBrand());
+        displayObject.put("Display model" , setDisplayModel());
+        displayObject.put("Display function", setDisplayFunction());
+        displayObject.put("Size of your display", setSizeOfYourDisplay());
+        displayObject.put("Has HDMI port", setHasHdmi());
+        displayObject.put("Has Display port", setHasDisplayPort());
+        displayObject.put("Has VGA port", setHasVga());
+        displayObject.put("Has DVI port", setHasDvi());
         creatDataBase(dataBaseFileName);
         writeFile(displayObject,displaysArray, dataBaseFileName);
     }

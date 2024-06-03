@@ -1,4 +1,4 @@
-package practices.computer.mouse;
+package practices.ComputerPartOnlineShop.OnlineShopCommodity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -6,20 +6,30 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static practices.computer.Computer.creatDataBase;
-import static practices.computer.display.Display.writeFile;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.creatDataBase;
+import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.writeFile;
 
 public class Mouse {
+
     Scanner scanner = new Scanner(System.in) ;
-    // for scan data from user
+        // for scan data from user
+
     String mouseBrand;
     // Asus , Logitech , A4tech
     String mouseConnectionType;
     // wire , wireless
+
     String mouseFunction;
     // gaming , official
+
     static final String dataBaseFileName = "miceDataBase.json";
-    ArrayList <String> miceBrandDataBase =  new ArrayList<>() ;
+    ArrayList<String> miceBrandDataBase =  new ArrayList<>() ;
     // brands must be in this list
     static JSONArray miceArray = new JSONArray();
 
@@ -32,7 +42,7 @@ public class Mouse {
         miceBrandDataBase.add("Logitech");
     }
 
-    // ---------------------------- / primitive type setter / ----------------------------- //
+    // --------------------------------------- / setters / ----------------------------------- //
     public String setMouseBrand() {
         addMiceBrandDataBase();
         for (int i = 0; i < miceBrandDataBase.size() ; i++) {
@@ -100,21 +110,20 @@ public class Mouse {
         System.out.println(" !! OKAY !! You have a " + mouseFunction + " mouse . ");
         return mouseFunction;
     }
-
-    // ---------------------------------- / getter / ----------------------------------- //
+    // -------------------------------- / object getter / ---------------------------------- //
     @Override
     public String toString() {
         return "Mouse{" +
-                "mouseBrand : \"" + mouseBrand + '\"' +
-                ", mouseConnectionType : \"" + mouseConnectionType + '\"' +
-                ", mouseFunction : \"" + mouseFunction + '\"' +
+                "mouseBrand='" + mouseBrand + '\'' +
+                ", mouseConnectionType='" + mouseConnectionType + '\'' +
+                ", mouseFunction='" + mouseFunction + '\'' +
                 '}';
     }
-
     // --------------------------------- / constructor / ----------------------------------- //
     public Mouse(){
         setMiceDataBase();
     }
+    // ------------------------------- / set JSON file  / --------------------------------- //
     public void setMiceDataBase() {
         JSONObject mouseObject = new JSONObject();
         mouseObject.put("Mouse brand", setMouseBrand());

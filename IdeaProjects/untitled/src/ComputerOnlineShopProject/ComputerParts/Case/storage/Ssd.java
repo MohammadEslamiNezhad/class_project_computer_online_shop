@@ -28,17 +28,14 @@ public class Ssd extends Storage {
         ssdBrandsDataBase.add("Lexar") ;
     }
     // ------------------------------------ / set brand / ------------------------------------ //
-    public void setBrand() {
-        this.ssdBrand = ssdBrandsDataBase.get(checkNumberInRange(0 ,
+    public String setBrand() {
+        ssdBrand = ssdBrandsDataBase.get(checkNumberInRange(0 ,
                 ssdBrandsDataBase.size() , "SSD brand" , ssdBrandsDataBase ));
+        return ssdBrand;
     }
-    // ------------------------------------ / constructor / ------------------------------------ //
+    // ------------------------------------ / constructor / ----------------------------------- //
     public Ssd(){
         setHasSsd(true);
-        setBrand();
-        setVolume();
-        setReadSpeed();
-        setWriteSpeed();
         setSsdsDataBase();
     }
 
@@ -54,10 +51,11 @@ public class Ssd extends Storage {
 
     public void setSsdsDataBase(){
         JSONObject ssdObject = new JSONObject();
-        ssdObject.put("SSD brand", ssdBrand);
-        ssdObject.put("SSD volume", volume);
-        ssdObject.put("SSD Read speed", readSpeed);
-        ssdObject.put("SSD Write speed", writeSpeed);
+        ssdObject.put("SSD brand", setBrand());
+        ssdObject.put("SSD model", setStorageModel());
+        ssdObject.put("SSD volume", setVolume());
+        ssdObject.put("SSD Read speed", setReadSpeed());
+        ssdObject.put("SSD Write speed", setWriteSpeed());
         creatDataBase("ssdsDataBase.json");
         writeFile(ssdObject , ssdsArray , "ssdsDataBase.json");
     }

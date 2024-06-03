@@ -1,5 +1,7 @@
 package practices.computer.Case.storage;
 
+import practices.computer.Computer;
+
 import java.util.Scanner;
 
 import static practices.computer.Case.MainBoard.printResult;
@@ -14,6 +16,8 @@ public class Storage {
     protected int readSpeed;
     protected int writeSpeed ;
     // Gb / sec
+
+    protected String storageModel ;
     static Scanner scanner = new Scanner(System.in) ;
 
     // ------------------------------------ / setters / ------------------------------------ //
@@ -23,7 +27,7 @@ public class Storage {
     public void setHasSsd(boolean hasSsd){
         Storage.hasSsd = hasSsd ;
     }
-    public void setVolume(){
+    public int setVolume(){
         do{
             System.out.print( " Please enter volume (GB) : " );
             int checkNumber = scanner.nextInt();
@@ -34,8 +38,9 @@ public class Storage {
                 break;
             }
         }while (true);
+        return volume;
     }
-    public void setReadSpeed(){
+    public int setReadSpeed(){
         do{
             System.out.print( " Please enter read speed (Mb/sec) : " );
             int checkNumber = scanner.nextInt();
@@ -46,8 +51,9 @@ public class Storage {
                 break;
             }
         }while (true);
+        return readSpeed;
     }
-    public void setWriteSpeed(){
+    public int setWriteSpeed(){
         do{
             System.out.print( " Please enter write speed (Mb/sec) : " );
             int checkNumber = scanner.nextInt();
@@ -58,9 +64,16 @@ public class Storage {
                 break;
             }
         }while (true);
+        return writeSpeed;
     }
 
-    // ------------------------------------ / getters / ------------------------------------ //
+    public String setStorageModel() {
+        System.out.print( " What is your storage model ? " );
+        storageModel = Computer.stringScanner.nextLine();
+        return storageModel ;
+    }
+
+// ------------------------------------ / getters / ------------------------------------ //
 
     public void getHasHdd() {
         printResult("has HDD" , String.valueOf(hasHdd)); // fixme (comments missed for this method)
@@ -99,7 +112,6 @@ public class Storage {
         System.out.println(" !! OKAY !! Your HDD is register ! ");
         return hdd ;
     }
-
     public static void getStorage(Storage storage){
         System.out.println("// -------------------------------- " +
                 "// Storage // ----------------------------- //");
@@ -118,7 +130,7 @@ public class Storage {
             System.out.println(ssd);
         }
     }
-
-
-
+    public String getStorageModel() {
+        return storageModel;
+    }
 }

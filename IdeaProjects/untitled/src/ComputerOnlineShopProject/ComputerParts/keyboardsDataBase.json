@@ -1,57 +1,55 @@
 [
   {
-    "Keyboard model" : "GK601-RGB",
     "Keyboard function":"Gaming",
     "Keyboard brand":"Green",
+    "Keyboard model":"GK601-RGB",
     "Keyboard connection type":"Wire"
   }
 ,
   {
-    "Keyboard model" : "MK270",
     "Keyboard function":"Official",
     "Keyboard brand":"Logitech",
+    "Keyboard model":"MK270",
     "Keyboard connection type":"Wireless"
   }
 ,
   {
-    "Keyboard model" : "TKM 7019W",
     "Keyboard function":"Official",
     "Keyboard brand":"TSCO",
+    "Keyboard model":"TKM 7019W",
     "Keyboard connection type":"Wireless"
   }
 ,
   {
-    "Keyboard model" : "TK 8031",
     "Keyboard function":"Gaming",
     "Keyboard brand":"TSCO",
+    "Keyboard model":"TK 8031",
     "Keyboard connection type":"Wire"
   }
 ,
   {
-    "Keyboard model" : "T8030",
     "Keyboard function":"Official",
     "Keyboard brand":"TSCO",
+    "Keyboard model":"T8030",
     "Keyboard connection type":"Wire"
   }
 ,
   {
-    "Keyboard model" : "KB1806",
     "Keyboard function":"Official",
     "Keyboard brand":"TSCO",
+    "Keyboard model":"KB1806",
     "Keyboard connection type":"Wire"
   }
 ,
   {
-    "Keyboard model" : "GK304",
-    "Keyboard function":"Official",
-    "Keyboard brand":"Green",
-    "Keyboard connection type":"Wire"
+    "Keyboard function":"Official","Keyboard brand":"Green",
+    "Keyboard model":"GK304","Keyboard connection type":"Wire"
   }
 ,
   {
-    "Keyboard model" : "GK306W",
     "Keyboard function":"Official",
     "Keyboard brand":"Green",
+    "Keyboard model":"GK306W",
     "Keyboard connection type":"Wireless"
   }
 ]

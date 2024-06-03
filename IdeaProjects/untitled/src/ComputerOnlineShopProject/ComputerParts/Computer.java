@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static practices.computer.Case.Case.*;
-import static practices.computer.display.Display.setDisplaysDataBase;
 
 public class Computer {
     Case computerCase ;
@@ -22,7 +21,6 @@ public class Computer {
     static ArrayList <Computer> computersDataBase = new ArrayList<>();
 
     public static void main(String args[]){
-        creatDataBase("MyProgramData.json");
         startOnlineShop();
     }
 

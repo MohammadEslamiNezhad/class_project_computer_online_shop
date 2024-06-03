@@ -7,8 +7,8 @@ public class Power extends ComputerPart{
     }
 
     @Override
-    public void setBrand(String brand) {
-        ComputerPart.brand = brand;
+    public String setBrand() {
+        return ComputerPart.brand;
     }
 
     @Override
