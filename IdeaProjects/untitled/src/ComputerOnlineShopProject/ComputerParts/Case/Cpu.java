@@ -14,7 +14,6 @@ import static practices.computer.display.Display.writeFile;
 public class Cpu {
     String cpuBrand;
     // intel or AMD
-    String cpuSku;
     String cpuFamily;
     // core i , ryzen
     int cpuFamilyNumber;
@@ -61,23 +60,19 @@ public class Cpu {
     JSONArray cpusArray = new JSONArray() ;
     // ---------------------------- // setters & getters // ----------------------------- //
     // --------------------------------- // setters // ---------------------------------- //
-    public void setBrand(){
+    public String setBrand(){
         this.cpuBrand = cpuBrandsDataBase.get( checkNumberInRange(1,
                 2, "CPU brands",cpuBrandsDataBase ) );
+        return cpuBrand ;
     }
 
-    public String setCpuSku() {
-        System.out.println(" What is your CPU SKU ? ");
-        this.cpuSku = scanner.nextLine();
-        return cpuSku;
-    }
-
-    public void setFamily(){
+    public String setFamily(){
         if (cpuBrand.equals("Intel")){
             this.cpuFamily =  setIntelCpuFamily();
         } else if (cpuBrand.equals("AMD")) {
             this.cpuFamily =  setAmdCpuFamily();
         }
+        return cpuFamily ;
     }
     private String setAmdCpuFamily(){
         return amdCpuFamiliesDataBase.get(checkNumberInRange(1,3,
@@ -87,7 +82,7 @@ public class Cpu {
         return intelCpuFamiliesDataBase.get(checkNumberInRange(1,3
                 , "Intel CPU families" , intelCpuFamiliesDataBase) ) ;
     }
-    public void setFamilyNumber(){
+    public int setFamilyNumber(){
         if (cpuFamily.equals("Ryzen") || cpuFamily.equals("core i")){
             this.cpuFamilyNumber = cpuFamilyNumbers.
                     get(checkNumberInList(cpuFamilyNumbers,"CPU family ")) ;
@@ -98,8 +93,9 @@ public class Cpu {
         }else {
             System.out.println(" !! Error !! you don't have cpu family ! ");
         }
+        return cpuFamilyNumber;
     }
-    public void setGeneration() {
+    public int setGeneration() {
         if (cpuFamily.equals("core i")) {
             this.cpuGeneration = intelGenerationNumbers.get(checkNumberInList(
                             intelGenerationNumbers, "Intel CPU  generations"));
@@ -110,6 +106,7 @@ public class Cpu {
             System.out.println(" Oh your CPU is very old . I don't have generation of " +
                     "your CPU on my database . ");
         }
+        return cpuGeneration ;
     }
 
     // --------------------------------- // getters // --------------------------------- //
@@ -117,7 +114,6 @@ public class Cpu {
     public String toString() {
         return "Cpu{" +
                 "cpuBrand='" + cpuBrand + '\'' +
-                "cpuSku='" + cpuSku + '\'' +
                 ", cpuFamily='" + cpuFamily + '\'' +
                 ", cpuFamilyNumber=" + cpuFamilyNumber +
                 ", cpuGeneration=" + cpuGeneration +
@@ -125,15 +121,20 @@ public class Cpu {
     }
     // -------------------- // constructor && get instance of class// -------------------- //
     public Cpu(){
-        setBrand();
-        setFamily();
-        setFamilyNumber();
-        setGeneration();
-        setCpuSku();
         setCpusDataBase();
     }
 
     // ------------------------------ // other methods // ------------------------------ //
+
+    public void setCpusDataBase(){
+        JSONObject cpuObject = new JSONObject();
+        cpuObject.put("CPU brand", setBrand());
+        cpuObject.put("CPU Family", setFamily());
+        cpuObject.put("CPU FamilyNumber", setFamilyNumber());
+        cpuObject.put("CPU Generation", setGeneration());
+        creatDataBase("CPUsDataBase.json");
+        writeFile(cpuObject , cpusArray , "CPUsDataBase.json");
+    }
     public static int checkNumberInList(ArrayList list , String message){
         int number;
         do {
@@ -144,17 +145,5 @@ public class Cpu {
             }
         }while(!list.contains(number));
         return list.indexOf(number);
-    }
-
-
-    public void setCpusDataBase(){
-        JSONObject cpuObject = new JSONObject();
-        cpuObject.put("CPU brand", cpuBrand);
-        cpuObject.put("CPU Family", cpuFamily);
-        cpuObject.put("CPU FamilyNumber", cpuFamilyNumber);
-        cpuObject.put("CPU Generation", cpuGeneration);
-        cpuObject.put("CPU SKU", cpuSku);
-        creatDataBase("CPUsDataBase.json");
-        writeFile(cpuObject , cpusArray , "CPUsDataBase.json");
     }
 }

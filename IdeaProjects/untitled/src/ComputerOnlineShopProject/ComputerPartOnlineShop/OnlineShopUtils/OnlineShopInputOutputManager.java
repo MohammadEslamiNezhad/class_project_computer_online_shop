@@ -160,4 +160,17 @@ public class OnlineShopInputOutputManager {
             System.out.println(" " + (i + 1) + ". " + dataBase.get(i));
         }
     }
+    public static int checkNumberInRange(int firstNumber , int finishedNumber , String message){
+        int checkNumber;
+        do{
+            System.out.print(" Please enter " + message + " of your system : ") ;
+            checkNumber = new Scanner(System.in).nextInt();
+            if (firstNumber > checkNumber || finishedNumber < checkNumber){
+                System.out.println(" !! Error !! Please try again ! ");
+            }else {break;}
+
+        }while (true);
+        return checkNumber ;
+    }
+
 }
