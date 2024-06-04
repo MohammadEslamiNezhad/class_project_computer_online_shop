@@ -13,7 +13,7 @@ import static practices.computer.Computer.creatDataBase;
 import static practices.computer.display.Display.writeFile;
 
 public class Power {
-    // ------------------------------ // variables // -------------------------------- //
+    // ---------------------------------- // variables // ----------------------------------- //
     String powerBrand;
     // Green , Asus , TSCO , ....
     String powerModel ;
@@ -25,7 +25,7 @@ public class Power {
     ArrayList <String> powerBrandsDataBase = new ArrayList<> ();
     ArrayList <String> powerGovahiname80PlusStatusDataBase = new ArrayList<> () ;
     JSONArray powersArray = new JSONArray() ;
-    // --------------------- // add brands to DataBases // ------------------------ //
+    // ----------------------- // add brands to DataBases // ------------------------- //
     {
         powerBrandsDataBase.add("Green");
         powerBrandsDataBase.add("Asus");
@@ -36,7 +36,7 @@ public class Power {
         powerGovahiname80PlusStatusDataBase.add("gold");
         powerGovahiname80PlusStatusDataBase.add("basic");
     }
-    // ------------------------------- // setters // ---------------------------------- //
+    // -------------------------------- // setters // ----------------------------------- //
     public void setBrand(){
         this.powerBrand = powerBrandsDataBase.get(checkNumberInRange
                 (0 , powerBrandsDataBase.size(), "power brand"
