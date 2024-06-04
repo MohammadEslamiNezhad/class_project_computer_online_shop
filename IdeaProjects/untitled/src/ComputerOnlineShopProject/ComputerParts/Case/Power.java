@@ -36,13 +36,9 @@ public class Power {
         powerGovahiname80PlusStatusDataBase.add("gold");
         powerGovahiname80PlusStatusDataBase.add("basic");
     }
-<<<<<<< HEAD
     // ------------------------------- // setters // ---------------------------------- //
     public String setBrand(){
-=======
-    // -------------------------------- // setters // ----------------------------------- //
-    public void setBrand(){
->>>>>>> 15bb4b415d64cb902da609c6828297d63a5ba725
+
         this.powerBrand = powerBrandsDataBase.get(checkNumberInRange
                 (0 , powerBrandsDataBase.size(), "power brand"
                         , powerBrandsDataBase )) ;
