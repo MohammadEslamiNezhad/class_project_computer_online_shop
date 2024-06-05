@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.creatDataBase;
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.writeFile;
 
-public class Keyboard extends ComputerPart{
+public class Keyboard implements ComputerPart{
     String keyboardBrand;
     String keyboardConnectionType;
     // wire , wireless

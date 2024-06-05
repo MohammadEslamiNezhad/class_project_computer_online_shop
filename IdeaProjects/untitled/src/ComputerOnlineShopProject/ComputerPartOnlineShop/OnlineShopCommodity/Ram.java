@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.*;
 
 
-public class Ram extends ComputerPart{
+public class Ram implements ComputerPart{
 
     // --------------------- // reference type variables // ------------------------ //
     int ramGeneration ;
@@ -110,24 +110,18 @@ public class Ram extends ComputerPart{
     }
 
     @Override
-    public void setOwnerUserName(String ownerUserName) {
-        ComputerPart.ownerUserName = ownerUserName;
-    }
+    public void setOwnerUserName(String ownerUserName) {}
 
     @Override
     public String setBrand() {
-        return ComputerPart.brand ;
+        return null ;
     }
 
     @Override
-    public void setModel(String model) {
-        ComputerPart.model = model;
-    }
+    public void setModel(String model) {}
 
     @Override
-    public void setPrice(long price) {
-        ComputerPart.price = price;
-    }
+    public void setPrice(long price) {}
 
     @Override
     public int getStore() {
@@ -136,21 +130,21 @@ public class Ram extends ComputerPart{
 
     @Override
     public String getOwnerUserName() {
-        return ComputerPart.ownerUserName;
+        return null ;
     }
 
     @Override
     public String getBrand() {
-        return ComputerPart.brand;
+        return null ;
     }
 
     @Override
     public String getModel() {
-        return ComputerPart.model;
+        return null ;
     }
 
     @Override
     public long getPrice() {
-        return ComputerPart.price;
+        return 0 ;
     }
 }

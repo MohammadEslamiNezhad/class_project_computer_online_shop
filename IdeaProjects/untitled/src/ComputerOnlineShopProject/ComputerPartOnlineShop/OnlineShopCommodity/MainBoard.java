@@ -8,31 +8,25 @@ import java.util.ArrayList;
 import static practices.ComputerPartOnlineShop.OnlineShopCommodity.Display.hasPart;
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.*;
 
-public class MainBoard extends ComputerPart{
+public class MainBoard implements ComputerPart{
     @Override
     public void setStore(int store) {
 
     }
 
     @Override
-    public void setOwnerUserName(String ownerUserName) {
-        ComputerPart.ownerUserName = ownerUserName;
-    }
+    public void setOwnerUserName(String ownerUserName) {}
 
     @Override
     public String setBrand() {
-        return ComputerPart.brand ;
+        return null ;
     }
 
     @Override
-    public void setModel(String model) {
-        ComputerPart.model = model;
-    }
+    public void setModel(String model) {}
 
     @Override
-    public void setPrice(long price) {
-        ComputerPart.price = price;
-    }
+    public void setPrice(long price) {}
 
     @Override
     public int getStore() {
@@ -41,22 +35,22 @@ public class MainBoard extends ComputerPart{
 
     @Override
     public String getOwnerUserName() {
-        return ComputerPart.ownerUserName;
+        return " ";
     }
 
     @Override
     public String getBrand() {
-        return ComputerPart.brand;
+        return " ";
     }
 
     @Override
     public String getModel() {
-        return ComputerPart.model;
+        return " ";
     }
 
     @Override
     public long getPrice() {
-        return ComputerPart.price;
+        return 0;
     }
 
     // -------------------------------- // Variables // --------------------------------- //

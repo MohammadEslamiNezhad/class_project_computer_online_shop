@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.*;
 
-public class Power extends ComputerPart{
+public class Power implements ComputerPart{
 
     // ------------------------------ // variables // -------------------------------- //
     String powerBrand;
@@ -101,19 +101,13 @@ public class Power extends ComputerPart{
     }
 
     @Override
-    public void setOwnerUserName(String ownerUserName) {
-        ComputerPart.ownerUserName = ownerUserName;
-    }
+    public void setOwnerUserName(String ownerUserName) {}
 
     @Override
-    public void setModel(String model) {
-        ComputerPart.model = model;
-    }
+    public void setModel(String model) {}
 
     @Override
-    public void setPrice(long price) {
-        ComputerPart.price = price;
-    }
+    public void setPrice(long price) {}
 
     @Override
     public int getStore() {
@@ -122,21 +116,21 @@ public class Power extends ComputerPart{
 
     @Override
     public String getOwnerUserName() {
-        return ComputerPart.ownerUserName;
+        return null ;
     }
 
     @Override
     public String getBrand() {
-        return ComputerPart.brand;
+        return null ;
     }
 
     @Override
     public String getModel() {
-        return ComputerPart.model;
+        return null ;
     }
 
     @Override
     public long getPrice() {
-        return ComputerPart.price;
+        return 0 ;
     }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static practices.ComputerPartOnlineShop.OnlineShopUtils.OnlineShopInputOutputManager.*;
 
-public class Cpu extends ComputerPart{
+public class Cpu implements ComputerPart {
     String cpuBrand;
     // intel or AMD
     String cpuFamily;
@@ -143,14 +143,10 @@ public class Cpu extends ComputerPart{
     }
 
     @Override
-    public void setOwnerUserName(String ownerUserName) {
-        ComputerPart.ownerUserName = ownerUserName;
-    }
+    public void setOwnerUserName(String ownerUserName) {}
 
     @Override
-    public void setPrice(long price) {
-        ComputerPart.price = price;
-    }
+    public void setPrice(long price) {}
 
     @Override
     public int getStore() {
@@ -159,22 +155,22 @@ public class Cpu extends ComputerPart{
 
     @Override
     public String getOwnerUserName() {
-        return ComputerPart.ownerUserName;
+        return " ";
     }
 
     @Override
     public String getBrand() {
-        return ComputerPart.brand;
+        return " ";
     }
 
     @Override
     public String getModel() {
-        return ComputerPart.model;
+        return " ";
     }
 
     @Override
     public long getPrice() {
-        return ComputerPart.price;
+        return 0;
     }
 
 
