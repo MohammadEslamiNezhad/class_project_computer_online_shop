@@ -3,11 +3,14 @@ package practices.ComputerPartOnlineShop.OnlineShopUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBacksOdMainMenu;
+import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBackMainMenu;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class OnlineShopInputOutputManager {
     public static Scanner stringScanner = new Scanner(System.in);
@@ -22,22 +25,14 @@ public class OnlineShopInputOutputManager {
         showWelcomeMessage("computer online shop ");
         System.out.println(" /---------------------------------------/");
         System.out.println(" 1. Search computer parts .");
-        System.out.println(" 2. Buy computer parts . ");
-        System.out.println(" 3. Sell computer parts . ");
 
         System.out.println(" 0. Exit ");
         showEnterNumberMessage();
     } // This method show main menu options .
-    public static void runProgramOptions(int option, OnlineShopCallBacksOdMainMenu callBack){
+    public static void runProgramOptions(int option, OnlineShopCallBackMainMenu callBack){
         switch (option){
             case 1 :
                 callBack.onSearchMenuCallBack();
-                break;
-            case 2 :
-                callBack.onBuyMenuCallBack();
-                break;
-            case 3 :
-                callBack.onSellMenuCallBack();
                 break;
             case 0 :
                 break;
@@ -53,31 +48,19 @@ public class OnlineShopInputOutputManager {
     } // In this I want to show to user what menu he's on this .
     public static void showSearchMenuOptions(){
         showWelcomeMessage("search computer parts ");
-        showComputerPartSearchOption(1,"types");
-        showComputerPartSearchOption(2,"brands");
-        showComputerPartSearchOption(3,"models");
-        System.out.println( " 4. Show computer parts . ");
+        System.out.println(" 1. computer part type . ");
         System.out.println(" 0. Exit ");
         showEnterNumberMessage();
-    }
-    private static void showComputerPartSearchOption(int optionNumber , String option){
-        System.out.println(" " + optionNumber + ". " + "computer part " + option);
     }
     public static void onSearchMenuOptions(int option){
         switch (option){
             case 1 :
-                showWelcomeMessage("search computer part by types . ");
+                showWelcomeMessage("search computer part by type ");
+                showComputerPartsForSearch();
+                int searchOption = numberScanner.nextInt() ;
+                showComputerParts(searchOption);
                 break;
-            case 2 :
-                showWelcomeMessage("search computer part by brands . ");
-                break;
-            case 3 :
-                showWelcomeMessage("search computer part by models . ");
-                break;
-            case 4 :
-                System.out.println(" OKAY , Here you are : ");
-                // fixme ( there isn't computer parts here)
-                break;
+
             case 0 :
                 break;
 
@@ -85,7 +68,72 @@ public class OnlineShopInputOutputManager {
                 showWrongNumberError();
         }
     }
+    public static void showComputerPartsForSearch(){
+        System.out.println(" 1. CPU ");
+        System.out.println(" 2. RAM ");
+        System.out.println(" 3. Power ");
+        System.out.println(" 4. MainBoard ");
+        System.out.println(" 5. Storage (like SSD and HDD) ");
+        System.out.println(" 6. Display ");
+        System.out.println(" 7. Mouse ");
+        System.out.println(" 8. Keyboard ");
+        System.out.println(" 9. GPU ");
+        System.out.println(" 0. Exit ");
+    }
 
+    public static void printJsonFile(String filePath) {
+        try {
+            String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
+            JSONArray jsonArray = new JSONArray(jsonString);
+            System.out.println(jsonArray.toString(4)); // print the JSON with indentation
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+    public static void showComputerParts(int option)  {
+        switch (option){
+
+            case 1 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\CPUsDataBase.json");
+                break;
+            case 2 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\RAMsDataBase.json");
+                break;
+
+            case 3 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\PowersDataBase.json");
+                break;
+
+            case 4 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\MainBoardsDataBase.json");
+                break;
+
+            case 5 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\ssdsDataBase.json");
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\hddsDataBase.json");
+                break;
+
+            case 6 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\DisplaysDataBase.json");
+                break;
+
+            case 7 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\miceDataBase.json");
+                break;
+
+            case 8 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\keyboardsDataBase.json");
+                break;
+
+            case 9 :
+                printJsonFile("C:\\Users\\Mohammad\\IdeaProjects\\untitled\\src\\ComputerOnlineShopProject\\ComputerPartOnlineShop\\JSON files\\GPUsDataBase.json");
+                break;
+
+            case 0 :
+                break;
+
+        }
+    }
     public static void creatDataBase(String dataBaseName){
         try{
             File projectDataBase = new File(dataBaseName);

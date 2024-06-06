@@ -1,6 +1,6 @@
 package practices.ComputerPartOnlineShop;
 
-import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBacksOdMainMenu;
+import practices.ComputerPartOnlineShop.interfaces.OnlineShopCallBackMainMenu;
 
 import java.util.Scanner;
 
@@ -11,32 +11,14 @@ public class ComputerPartsOnlineShop {
         startOnlineShop();
     }
     public static void startOnlineShop(){
-        showMainMenu(new OnlineShopCallBacksOdMainMenu() {
-
-            @Override
-            public void onSearchMenuCallBack() {
-                onWhatMenu("search");
-                showSearchMenuOptions();
-                int option = new Scanner(System.in).nextInt();
-                onSearchMenuOptions(option);
-                // fixme ( search options menu ) [ name , brand , model
-                //  , other attributes ]
-            }
-
-            @Override
-            public void onBuyMenuCallBack() {
-                onWhatMenu("buy");
-                onSearchMenuCallBack();
-            }
-
-            @Override
-            public void onSellMenuCallBack() {
-                onWhatMenu("sell");
-                onSearchMenuCallBack();
-            }
+        showMainMenu(() -> {
+            onWhatMenu("search");
+            showSearchMenuOptions();
+            int option = new Scanner(System.in).nextInt();
+            onSearchMenuOptions(option);
         });
     }
-    public static void showMainMenu(OnlineShopCallBacksOdMainMenu callBack){
+    public static void showMainMenu(OnlineShopCallBackMainMenu callBack){
         showMainMenuOptions();
         int option = new Scanner(System.in).nextInt();
         runProgramOptions(option,callBack);
