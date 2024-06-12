@@ -1,246 +1,146 @@
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.*;
 
 class ComputerShop {
-    private Category selectedCategory;
-        public static void main(String[] args) {
-            ComputerShop shop = new ComputerShop();
+    private static List<Category> categories = new ArrayList<>();;
 
-            while (true) {
-                System.out.println("منو اصلی:");
-                System.out.println("1. اضافه کردن دسته جدید");
-                System.out.println("2. اضافه کردن کالا جدید");
-                System.out.println("3. نمایش کالاها");
-                System.out.println("4. ذخیره در فایل");
-                System.out.println("5. خروج");
+    static Scanner scanner = new Scanner(System.in);
 
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("گزینه را انتخاب کنید: ");
-                int option = scanner.nextInt();
+    static {
+        // اضافه کردن دسته بندی ها
+        Category laptopCategory = new Category("لپ تاپ");
+        Category desktopCategory = new Category("دسکتاپ");
+        Category mobileCategory = new Category("موبایل");
 
-                switch (option) {
-                    case 1:
-                        shop.addCategory();
-                        break;
-                    case 2:
-                        shop.addProduct();
-                        break;
-                    case 3:
-                        shop.showProducts();
-                        break;
-                    case 4:
-                        shop.saveToFile();
-                        break;
-                    case 5:
-                        System.out.println("خروج از برنامه...");
-                        return;
-                    default:
-                        System.out.println("گزینه نامعتبر است. لطفا دوباره انتخاب کنید.");
-                }
-            }
-        }
-    private List<Category> categories;
+        categories.add(laptopCategory);
+        categories.add(desktopCategory);
+        categories.add(mobileCategory);
 
-    public ComputerShop() {
-        this.categories = new ArrayList<>();
+        //... rest of the code
 
-        // Add default categories and products
-        Category cpuCategory = new Category("پردازنده");
-        cpuCategory.addProduct(new Item("Intel Core i5", Map.of("نسل", "10", "برند", "Intel", "مدل", "i5-10400")));
-        cpuCategory.addProduct(new Item("AMD Ryzen 5", Map.of("نسل", "5", "برند", "AMD", "مدل", "Ryzen 5 5600X")));
-        categories.add(cpuCategory);
+        // اضافه کردن ویژگی ها
+        laptopCategory.addFeature("پردازنده");
+        laptopCategory.addFeature("رم");
+        laptopCategory.addFeature("حافظه داخلی");
 
-        Category ramCategory = new Category("رم");
-        ramCategory.addProduct(new Item("Corsair 16GB DDR4", Map.of("حافظه", "16", "فرکانس", "3200")));
-        ramCategory.addProduct(new Item("Kingston 8GB DDR4", Map.of("حافظه", "8", "فرکانس", "2400")));
-        categories.add(ramCategory);
+        desktopCategory.addFeature("پردازنده");
+        desktopCategory.addFeature("رم");
+        desktopCategory.addFeature("حافظه داخلی");
 
-        Category hardDriveCategory = new Category("هارد");
-        hardDriveCategory.addProduct(new Item("Western Digital 1TB", Map.of("حافظه", "1000", "دور در دقیقه", "7200", "سرعت انتقال داده", "6Gb/s")));
-        hardDriveCategory.addProduct(new Item("Seagate 500GB", Map.of("حافظه", "500", "دور در دقیقه", "5400", "سرعت انتقال داده", "3Gb/s")));
-        categories.add(hardDriveCategory);
+        mobileCategory.addFeature("پردازنده");
+        mobileCategory.addFeature("رم");
+        mobileCategory.addFeature("حافظه داخلی");
+
+        // اضافه کردن کالاها
+        Map<String, String> laptop1Features = new HashMap<>();
+        laptop1Features.put("پردازنده", "Intel Core i5");
+        laptop1Features.put("رم", "8GB");
+        laptop1Features.put("حافظه داخلی", "512GB");
+        Item laptop1 = new Item("لپ تاپ ایسوس", laptop1Features, 15000000, 10);
+        laptopCategory.addProduct(laptop1);
+
+        Map<String, String> laptop2Features = new HashMap<>();
+        laptop2Features.put("پردازنده", "Apple M1");
+        laptop2Features.put("رم", "16GB");
+        laptop2Features.put("حافظه داخلی", "1TB");
+        Item laptop2 = new Item("لپ تاپ اپل", laptop2Features, 20000000, 10);
+        laptopCategory.addProduct(laptop2);
+
+        Map<String, String> desktop1Features = new HashMap<>();
+        desktop1Features.put("پردازنده", "Intel Core i7");
+        desktop1Features.put("رم", "16GB");
+        desktop1Features.put("حافظه داخلی", "1TB");
+        Item desktop1 = new Item("دسکتاپ ایسوس", desktop1Features, 10000000, 10);
+        desktopCategory.addProduct(desktop1);
+
+        Map<String, String> mobile1Features = new HashMap<>();
+        mobile1Features.put("پردازنده", "Qualcomm Snapdragon 888");
+        mobile1Features.put("رم", "8GB");
+        mobile1Features.put("حافظه داخلی", "128GB");
+        Item mobile1 = new Item("موبایل سامسونگ", mobile1Features, 5000000, 10);
+        mobileCategory.addProduct(mobile1);
+
+        Map<String, String> mobile2Features = new HashMap<>();
+        mobile2Features.put("پردازنده", "Apple A15 Bionic");
+        mobile2Features.put("رم", "6GB");
+        mobile2Features.put("حافظه داخلی", "64GB");
+        Item mobile2 = new Item("موبایل اپل", mobile2Features, 7000000, 10);
+        mobileCategory.addProduct(mobile2);
+
     }
+    public static void main(String[] args) {
 
-    public void addCategory() {
-        Scanner scanner = new Scanner(System.in);
-        Map<String, String> featuresValues = new HashMap<>();
-        boolean groupAdded = false;
-        Category category = null;
+        while (true) {
+            System.out.println("منو:");
+            System.out.println("1. اضافه کردن دسته بندی");
+            System.out.println("2. اضافه کردن کالا");
+            System.out.println("3. نمایش کالاها");
+            System.out.println("4. خروج از برنامه");
 
-        while (!groupAdded) {
-            System.out.println("۱. نام گروه");
-            System.out.println("۲. مشخصات گروه");
-            System.out.println("۳. نهایی کردن ثبت گروه");
-            System.out.print("گزینه را انتخاب کنید: ");
-            int option = scanner.nextInt();
-            scanner.nextLine(); // consume newline left-over
+            System.out.print("لطفا گزینه مورد نظر را انتخاب کنید: ");
+            int choice = scanner.nextInt();
 
-            switch (option) {
+            switch (choice) {
                 case 1:
-                    System.out.println("نام گروه را وارد کنید:");
-                    String groupName = scanner.nextLine();
-                    category = new Category(groupName);
+                    addCategory();
                     break;
                 case 2:
-                    System.out.println("مقدار ویژگی‌ها را وارد کنید:");
-                    for (String feature : selectedCategory.getFeatures()) {
-                        System.out.print(feature + ": ");
-                        String value = scanner.nextLine();
-                        featuresValues.put(feature, value);
-                    }
+                    addItem();
                     break;
                 case 3:
-                    if (category == null) {
-                        System.out.println("لطفا ابتدا نام گروه را وارد کنید.");
-                        break;
-                    }
-                    categories.add(category);
-                    groupAdded = true;
-
-                    // Write the new category to the file
-                    try (FileWriter writer = new FileWriter("shop.txt", true)) {
-                        writer.write("دسته: " + category.getName() + "\n");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Category.showProducts();
                     break;
+                case 4:
+                    System.out.println("خروج از برنامه...");
+                    return;
                 default:
-                    System.out.println("گزینه نامعتبر است.");
+                    System.out.println("گزینه وارد شده صحیح نیست. لطفا دوباره تلاش کنید.");
             }
         }
     }
 
-    public void addProduct() {
-        Scanner scanner = new Scanner(System.in);
-        boolean productAdded = false;
-        Item product = null;
-        Map<String, String> featuresValues = new HashMap<>();
+    private static void addCategory() {
+        System.out.print("لطفا نام دسته بندی را وارد کنید: ");
+        String categoryName = scanner.nextLine();
+        Category category = new Category(categoryName);
+        categories.add(category);
+        System.out.println("دسته بندی با موفقیت اضافه شد.");
+    }
 
-        // Select category or create a new one
-        System.out.println("دسته بندی کالا را انتخاب کنید:");
-        for (int i = 0; i < categories.size(); i++) {
-            System.out.println((i + 1) + ". " + categories.get(i).getName());
-        }
-        System.out.println((categories.size() + 1) + ". دسته جدید");
-        int categoryIndex = scanner.nextInt();
-        scanner.nextLine(); // consume newline left-over
-
-        Category selectedCategory;
-        if (categoryIndex <= categories.size()) {
-            selectedCategory = categories.get(categoryIndex - 1);
-        } else {
-            System.out.println("نام دسته جدید را وارد کنید:");
-            String categoryName = scanner.nextLine();
-            selectedCategory = new Category(categoryName);
-            categories.add(selectedCategory);
-
-            // Write the new category to the file
-            try (FileWriter writer = new FileWriter("shop.txt", true)) {
-                writer.write("دسته: " + selectedCategory.getName() + "\n");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Add features to the selected category
-        System.out.println("ویژگی‌های دسته را وارد کنید:");
-        while (true) {
-            System.out.print("ویژگی (یا 'done' برای پایان): ");
-            String feature = scanner.nextLine();
-            if (feature.equalsIgnoreCase("done")) {
+    private static void addItem() {
+        System.out.print("لطفا نام کالا را وارد کنید: ");
+        String itemName = scanner.nextLine();
+        System.out.print("لطفا دسته بندی کالا را وارد کنید: ");
+        String categoryName = scanner.nextLine();
+        boolean existCategory = false;
+        Category category1 = null;
+        for (Category category : categories){
+            if (categoryName.equals(category.getName())) {
+                existCategory = true;
+                category1 = category;
                 break;
             }
-            selectedCategory.addFeature(feature);
         }
-
-        while (!productAdded) {
-            System.out.println("۱. نام کالا");
-            System.out.println("۲. مقدار ویژگی‌ها");
-            System.out.println("۳. نهایی کردن ثبت کالا");
-            System.out.print("گزینه را انتخاب کنید: ");
-            int option = scanner.nextInt();
-            scanner.nextLine(); // consume newline left-over
-
-            switch (option) {
-                case 1:
-                    System.out.println("نام کالا را وارد کنید:");
-                    String productName = scanner.nextLine();
-                    product = new Item(productName, featuresValues);
-                    break;
-                case 2:
-                    System.out.println("مقدار ویژگی‌ها را وارد کنید:");
-                    for (String feature : selectedCategory.getFeatures()) {
-                        System.out.print(feature + ": ");
-                        String value = scanner.nextLine();
-                        featuresValues.put(feature, value);
-                    }
-                    break;
-                case 3:
-                    if (product != null) {
-                        selectedCategory.addProduct(product);
-                        productAdded = true;
-
-                        // Write the new product to the file
-                        try (FileWriter writer = new FileWriter("shop.txt", true)) {
-                            writer.write("  کالا: " + product.getName() + "\n");
-                            for (Map.Entry<String, String> entry : product.getFeaturesValues().entrySet()) {
-                                writer.write("    " + entry.getKey() + ": " + entry.getValue() + "\n");
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        System.out.println("لطفا ابتدا نام کالا را وارد کنید.");
-                    }
-                    break;
-                default:
-                    System.out.println("گزینه نامعتبر است.");
-            }
+        if (existCategory) {
+            System.out.println("دسته بندی یافت نشد.");
+            return;
         }
-    }
-    public void showProducts() {
-        for (Category category : categories) {
-            System.out.println("دسته: " + category.getName());
-            for (Item product : category.getProducts()) {
-                System.out.println("  کالا: " + product.getName());
-                for (Map.Entry<String, String> entry : product.getFeaturesValues().entrySet()) {
-                    System.out.println("    " + entry.getKey() + ": " + entry.getValue());
-                }
-            }
+        Map<String, String> features = new HashMap<>();
+        System.out.print("لطفا تعداد ویژگی ها را وارد کنید: ");
+        int featureCount = scanner.nextInt();
+        for (int i = 0; i < featureCount; i++) {
+            System.out.print("لطفا نام ویژگی را وارد کنید: ");
+            String featureName = scanner.nextLine();
+            System.out.print("لطفا مقدار ویژگی را وارد کنید: ");
+            String featureValue = scanner.nextLine();
+            features.put(featureName, featureValue);
         }
-    }
-
-    public void saveToFile() {
-        // Add default categories and products
-        Category cpuCategory = new Category("پردازنده");
-        cpuCategory.addProduct(new Item("CPU1", Map.of("نسل", "10", "برند", "Intel", "مدل", "Core i7")));
-        cpuCategory.addProduct(new Item("CPU2", Map.of("نسل", "11", "برند", "AMD", "مدل", "Ryzen 5")));
-
-        Category ramCategory = new Category("رم");
-        ramCategory.addProduct(new Item("RAM1", Map.of("حافظه", "8GB", "فرکانس", "3200MHz")));
-        ramCategory.addProduct(new Item("RAM2", Map.of("حافظه", "16GB", "فرکانس", "3600MHz")));
-
-        Category hardCategory = new Category("هارد");
-        hardCategory.addProduct(new Item("HDD1", Map.of("حافظه", "500GB", "دور در دقیقه", "7200", "سرعت انتقال داده", "100MB/s")));
-        hardCategory.addProduct(new Item("HDD2", Map.of("حافظه", "1TB", "دور در دقیقه", "5400", "سرعت انتقال داده", "50MB/s")));
-
-        categories.add(cpuCategory);
-        categories.add(ramCategory);
-        categories.add(hardCategory);
-
-        try (FileWriter writer = new FileWriter("shop.txt")) {
-            for (Category category : categories) {
-                writer.write("دسته: " + category.getName() + "\n");
-                for (Item product : category.getProducts()) {
-                    writer.write("  کالا: " + product.getName() + "\n");
-                    for (String feature : category.getFeatures()) {
-                        writer.write("    " + feature + ": " + product.getFeaturesValues().get(feature) + "\n");
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.print("لطفا قیمت کالا را وارد کنید: ");
+        int price = scanner.nextInt();
+        System.out.print("لطفا تعداد کالا را وارد کنید: ");
+        int quantity = scanner.nextInt();
+        Item item = new Item(itemName, features, price, quantity);
+        category1.addProduct(item);
+        System.out.println("کالا با موفقیت اضافه شد.");
     }
 }

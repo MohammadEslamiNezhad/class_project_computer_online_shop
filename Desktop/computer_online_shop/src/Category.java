@@ -1,46 +1,40 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+public class Category  {
     private String name;
-    private String description;
-    private List<String> features; // لیست ویژگی‌ها
-    private List<Item> products;
+    private static List<String> features;
+    private static List<Item> products;
 
     public Category(String name) {
         this.name = name;
-        this.features = new ArrayList<>();
-        this.products = new ArrayList<>();
-    }
-
-    public void addFeature(String feature) {
-        features.add(feature);
-    }
-
-    public List<String> getFeatures() {
-        return features;
-    }
-
-    public void addProduct(Item product) {
-        products.add(product);
+        features = new ArrayList<>();
+        products = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setDescription(String description) {
-        // NOTE: I assume you want to add a description field to the Category class
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
+    public List<String> getFeatures() {
+        return features;
     }
 
     public List<Item> getProducts() {
         return products;
     }
+    public static void showProducts() {
+        for (Item item : products){
+            for (String feature : features){
+                System.out.println( feature + " : " + item.features.get(feature));
+            }
+        }
+    }
+    public void addProduct(Item product) {
+        products.add(product);
+    }
 
-    // other getters and setters
+    public void addFeature(String feature) {
+        features.add(feature);
+    }
 }
