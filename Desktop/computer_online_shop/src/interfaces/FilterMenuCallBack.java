@@ -2,7 +2,7 @@ package interfaces;
 
 public interface FilterMenuCallBack {
     void setCommodityName();
-    void setGroupName();
+    void setCategoryName();
     void setBrand();
     void setPriceRange();
 

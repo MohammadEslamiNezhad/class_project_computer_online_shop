@@ -1,9 +1,19 @@
-package item_class;
-
-import java.util.HashMap;
+import java.util.Map;
 
 public class Item {
-    String itemName ; 
-    String category ; 
-    HashMap<String, String> valueFromCategory = new HashMap<>() ; 
+    private String name;
+    private Map<String, String> featuresValues;
+
+    public Item(String name, Map<String, String> featuresValues) {
+        this.name = name;
+        this.featuresValues = featuresValues;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, String> getFeaturesValues() {
+        return featuresValues;
+    }
 }
